@@ -1,0 +1,42 @@
+import com.madpickle.buildsrc.Libs
+
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk 32
+    defaultConfig {
+        minSdk 24
+        targetSdk 32
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation Libs.RxJava.rxKotlin
+    implementation Libs.Retrofit.lib
+    implementation Libs.Retrofit.okHttp
+    implementation Libs.Retrofit.okHttpLogging
+    implementation Libs.Retrofit.jsonParser
+    implementation Libs.Retrofit.converter
+    implementation Libs.Kotlin.stdLib
+    implementation Libs.Dagger.dagger
+    kapt Libs.Dagger.daggerCompiler
+}

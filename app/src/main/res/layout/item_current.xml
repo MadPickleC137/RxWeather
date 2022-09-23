@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="12dp"
+    android:elevation="5dp"
+    app:cardElevation="5dp"
+    app:strokeWidth="0dp"
+    android:layout_marginTop="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/item_current_bg">
+
+        <TextView
+            android:id="@+id/date_current"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textColor="@color/text_white_100"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Senin, 20 Desember 2021" />
+
+        <TextView
+            android:id="@+id/time_current"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textColor="@color/text_white_100"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="3.30 PM" />
+
+        <ImageView
+            android:id="@+id/icon_current"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="16dp"
+            android:contentDescription="@null"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/date_current"
+            app:srcCompat="@drawable/ic_clear_weather" />
+
+        <TextView
+            android:id="@+id/temp_current"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textColor="@color/text_white_100"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@id/icon_current"
+            app:layout_constraintTop_toBottomOf="@id/date_current"
+            tools:text="18º C" />
+
+        <TextView
+            android:id="@+id/region_current"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:textColor="@color/text_white_80"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/icon_current"
+            app:layout_constraintTop_toBottomOf="@id/temp_current"
+            tools:text="Hujan Berawan" />
+
+        <View
+            android:id="@+id/guideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/region_current" />
+
+        <LinearLayout
+            android:id="@+id/uf_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="6dp"
+            android:background="@drawable/item_current_detail_bg"
+            app:layout_constraintEnd_toStartOf="@+id/cloud_layout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline">
+
+            <TextView
+                android:id="@+id/uf_current"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/text_white_100"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="8" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/text_white_100"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/icon_current"
+                android:text="@string/uf_index" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cloud_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="6dp"
+            android:background="@drawable/item_current_detail_bg"
+            app:layout_constraintEnd_toStartOf="@+id/wind_layout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/uf_layout"
+            app:layout_constraintTop_toBottomOf="@id/guideline">
+
+            <TextView
+                android:id="@+id/cloud_current"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/text_white_100"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="82%" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/text_white_100"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/icon_current"
+                android:text="@string/cloud" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/wind_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="6dp"
+            android:background="@drawable/item_current_detail_bg"
+            app:layout_constraintEnd_toStartOf="@+id/humidity_layout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cloud_layout"
+            app:layout_constraintTop_toBottomOf="@id/guideline">
+
+            <TextView
+                android:id="@+id/wind_current"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/text_white_100"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="12 км/ч" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/text_white_100"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/icon_current"
+                android:text="@string/wind" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/humidity_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="6dp"
+            android:background="@drawable/item_current_detail_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/wind_layout"
+            app:layout_constraintTop_toBottomOf="@id/guideline">
+
+            <TextView
+                android:id="@+id/humidity_current"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/text_white_100"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="70 %" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/text_white_100"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/icon_current"
+                android:text="@string/humidity" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/last_updated_current"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textColor="@color/text_white_100"
+            app:layout_constraintTop_toBottomOf="@id/uf_layout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Последнее обновление в 21:00" />
+
+        <ImageButton
+            android:id="@+id/refresh_current"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/ic_update"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/humidity_layout"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

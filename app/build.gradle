@@ -1,0 +1,62 @@
+import com.madpickle.buildsrc.Libs
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.madpickle.rxweather"
+        minSdk 24
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    //MODULES
+    implementation project(':core-di')
+    implementation project(':core-android-utils')
+    implementation project(':core-data')
+
+    //KOTLIN
+    implementation Libs.Kotlin.stdLib
+
+    //LIBS
+    kapt Libs.Dagger.daggerCompiler
+    implementation Libs.Dagger.dagger
+    implementation Libs.Android.core
+    implementation Libs.Android.appCompat
+    implementation Libs.Android.material
+    implementation Libs.Android.constraintLayout
+    implementation Libs.Navigation.navFragment
+    implementation Libs.Navigation.navUi
+    implementation Libs.Navigation.navDynamic
+    testImplementation Libs.Test.junit
+    testImplementation Libs.Test.junitExt
+    androidTestImplementation Libs.Test.junitExt
+    androidTestImplementation Libs.Test.espresso
+}
