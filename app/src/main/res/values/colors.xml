@@ -8,5 +8,8 @@
     <color name="text_white_80">#DDFFFFFF</color>
     <color name="item_current_detail_layout">#4598A0D6</color>
     <color name="toolbar_background">#25ACC1EC</color>
+    <color name="expanded_appbar_bg_start">#4F80FA</color>
+    <color name="expanded_appbar_bg_center">#3764D7</color>
+    <color name="expanded_appbar_bg_end">#335FD1</color>
     <color name="bg_card_astro">#1A2237</color>
 </resources>

@@ -1,35 +1,55 @@
 package com.madpickle.core_data.model
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.madpickle.core_network.model.BaseResponse
+import com.madpickle.core_network.model.Location
+import com.madpickle.core_network.model.Place
+import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
+import io.realm.annotations.RealmClass
+import io.realm.annotations.Required
+import java.util.*
 
 /**
  * Created by David Madilyan on 28.08.2022.
  */
-@Entity(tableName = "location_weather")
-data class LocationModel(
-    @PrimaryKey(autoGenerate = true) val idLocation: Int = 0,
-    val name: String?,
-    val region: String?,
-    val country: String?,
-    val lat: Double?,
-    val lon: Double?,
-    val tzId: String?,
-    val localtimeEpoch: Long?,
-    val localtime: String?,
-){
+@RealmClass(embedded = true)
+open
+class LocationModel(
+    @PrimaryKey
+    @Required
+    val id: String = UUID.randomUUID().toString(),
+    var name: String?,
+    var region: String?,
+    var country: String?,
+    var lat: Double?,
+    var lon: Double?,
+    var tzId: String?,
+    var localtimeEpoch: Long?,
+    var localtime: String?,
+): RealmObject() {
     companion object{
-        fun InitLocation(response: BaseResponse): LocationModel{
+        fun InitLocation(location: Location): LocationModel{
             return LocationModel(
-                name = response.location?.name,
-                region = response.location?.region,
-                country = response.location?.country,
-                lat = response.location?.lat,
-                lon = response.location?.lon,
-                localtimeEpoch = response.location?.localtimeEpoch,
-                tzId = response.location?.tzId,
-                localtime = response.location?.localtime,
+                name = location.name,
+                region = location.region,
+                country = location.country,
+                lat = location.lat,
+                lon = location.lon,
+                localtimeEpoch = location.localtimeEpoch,
+                tzId = location.tzId,
+                localtime = location.localtime,
+            )
+        }
+
+        fun InitLocation(place: Place): LocationModel{
+            return LocationModel(
+                name = place.name,
+                region = place.region,
+                country = place.country,
+                lat = place.lat,
+                lon = place.lon,
+                localtimeEpoch = null,
+                tzId = null,
+                localtime = null,
             )
         }
     }

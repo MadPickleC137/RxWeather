@@ -16,5 +16,4 @@ class WeatherServiceModule {
     @Provides
     @Singleton
     fun provideWeatherNetworkSource(apiService: IWeatherService): IWeatherNetworkSource = WeatherNetworkSource(apiService)
-
 }

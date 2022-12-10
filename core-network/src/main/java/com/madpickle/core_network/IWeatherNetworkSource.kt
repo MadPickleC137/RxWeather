@@ -4,18 +4,18 @@ import com.madpickle.core_network.model.AstronomyResponse
 import com.madpickle.core_network.model.CurrentResponse
 import com.madpickle.core_network.model.ForecastResponse
 import com.madpickle.core_network.model.Place
-import io.reactivex.rxjava3.core.Observer
+import io.reactivex.rxjava3.core.Observable
 
 /**
  * Created by David Madilyan on 23.08.2022.
  */
 interface IWeatherNetworkSource {
 
-    fun subscribeCurrent(location: String, observer: Observer<CurrentResponse>)
+    fun getCurrentWeather(location: String): Observable<CurrentResponse>
 
-    fun subscribeForecast(location: String, days: Int, observer: Observer<ForecastResponse>)
+    fun getForecastByDays(location: String, days: Int): Observable<ForecastResponse>
 
-    fun subscribeAstronomy(location: String, date: String, observer: Observer<AstronomyResponse>)
+    fun getAstronomy(location: String, date: String): Observable<AstronomyResponse>
 
-    fun subscribeSearchPlaces(place: String, observer: Observer<List<Place>>)
+    fun searchPlaces(regionName: String): Observable<List<Place>>
 }

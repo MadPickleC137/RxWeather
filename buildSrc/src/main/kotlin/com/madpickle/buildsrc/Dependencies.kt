@@ -59,14 +59,8 @@ object Libs{
         const val rxKotlin = "io.reactivex.rxjava3:rxkotlin:$rxKotlinVersion"
     }
 
-    object Room {
-        private const val version = "2.4.2"
-        const val ktx = "androidx.room:room-ktx:$version"
-        const val roomKapt = "androidx.room:room-compiler:$version"
-        const val runtime = "androidx.room:room-runtime:$version"
-        const val roomRx = "androidx.room:room-rxjava3:$version"
-        const val annotationProcessor = "androidx.room:room-compiler:$version"
-        const val paging = "androidx.room:room-paging:2.5.0-alpha01"
+    object Realm {
+        const val base = "io.realm:realm-gradle-plugin:10.10.1"
     }
 
     object Retrofit {
@@ -75,6 +69,7 @@ object Libs{
         const val jsonParser = "com.squareup.retrofit2:converter-gson:$version"
         const val converter = "com.squareup.retrofit2:converter-scalars:$version"
         const val okHttp = "com.squareup.okhttp3:okhttp:4.9.3"
+        const val rxAdapterRetrofit = "com.squareup.retrofit2:adapter-rxjava3:$version"
         const val okHttpLogging = "com.squareup.okhttp3:logging-interceptor:4.7.2"
     }
 

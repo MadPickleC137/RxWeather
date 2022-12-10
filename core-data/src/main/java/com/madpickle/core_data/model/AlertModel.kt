@@ -1,28 +1,31 @@
 package com.madpickle.core_data.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import com.madpickle.core_network.model.Alert
+import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
+import io.realm.annotations.RealmClass
+import io.realm.annotations.Required
+import java.util.*
 
 /**
  * Created by David Madilyan on 28.08.2022.
  */
-@Entity(tableName = "alerts")
-data class AlertModel(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val headline: String?,
-    val areas: String?,
-    @ColumnInfo(name = "region_alert")
-    val region: String,                                                                             //регион по которому будут определяться алерты в кэше
-    val note: String?,
-    val effective: String?,
-    val expires: String?,
-    val instruction: String?,
-    val category: String?,                                                                          // категория на английском
-    val event: String?,                                                                             //тип придупреждения
-    val desc: String?,
-){
+@RealmClass(embedded = true)
+open class AlertModel(
+    @PrimaryKey
+    @Required
+    val id: String = UUID.randomUUID().toString(),
+    var headline: String?,
+    var areas: String?,
+    var region: String,                                                                             //регион по которому будут определяться алерты в кэше
+    var note: String?,
+    var effective: String?,
+    var expires: String?,
+    var instruction: String?,
+    var category: String?,                                                                          // категория на английском
+    var event: String?,                                                                             //тип придупреждения
+    var desc: String?,
+) : RealmObject() {
     companion object{
         fun InitAlertModel(alert: Alert, regionCurrent: String?): AlertModel{
             return AlertModel(

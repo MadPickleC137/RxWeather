@@ -1,41 +1,45 @@
 package com.madpickle.core_data.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import com.madpickle.core_network.model.Current
+import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
+import io.realm.annotations.RealmClass
+import io.realm.annotations.Required
+import java.util.*
 
 /**
  * Created by David Madilyan on 27.08.2022.
+ *
+ * общие данные о текущей погоде
  */
-@Entity(tableName = "current_weather")
-data class CurrentModel(
-    //общие данные о текущей погоде
-    @PrimaryKey(autoGenerate = true) val idCurrent: Int = 0,
-    val lastUpdated: String?,
-    @ColumnInfo(name = "region_current")
-    val region: String?,
-    val temperature: Double?,
-    val isDay: Boolean?,
-    val cloud: Int?,
-    val humidity: Int?,
-    val feelsLike: Double?,
-    val windKmp: Double?,
-    val uv: Double?,
+@RealmClass(embedded = true)
+open class CurrentModel(
+    @PrimaryKey
+    @Required
+    val id: String = UUID.randomUUID().toString(),
+    var lastUpdated: String?,
+    var region: String?,
+    var temperature: Double?,
+    var isDay: Boolean?,
+    var cloud: Int?,
+    var humidity: Int?,
+    var feelsLike: Double?,
+    var windKmp: Double?,
+    var uv: Double?,
 
     //данные об иконке
-    val text: String = "",
-    val iconUrl: String = "",
-    val code: Int,
+    var text: String = "",
+    var iconUrl: String = "",
+    var code: Int,
 
     //данные о воздухе
-    val co: Float? = null,
-    val o3: Float? = null,
-    val no2: Float? = null,
-    val so2: Float? = null,
-    val pm25: Float? = null,
-    val pm10: Float? = null,
-) {
+    var co: Float? = null,
+    var o3: Float? = null,
+    var no2: Float? = null,
+    var so2: Float? = null,
+    var pm25: Float? = null,
+    var pm10: Float? = null,
+): RealmObject() {
 
     companion object{
         fun InitCurrent(currentResponse: Current, region: String?): CurrentModel {

@@ -31,6 +31,7 @@ android {
 
 dependencies {
     implementation Libs.RxJava.rxKotlin
+    implementation Libs.Retrofit.rxAdapterRetrofit
     implementation Libs.Retrofit.lib
     implementation Libs.Retrofit.okHttp
     implementation Libs.Retrofit.okHttpLogging

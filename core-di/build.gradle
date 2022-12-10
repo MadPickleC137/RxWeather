@@ -36,13 +36,12 @@ dependencies {
     implementation project(':core-network')
     implementation project(':core-android-utils')
 
-    kapt Libs.Room.roomKapt
     kapt Libs.Dagger.daggerCompiler
 
     //KOTLIN
     implementation Libs.Kotlin.stdLib
+
     //LIBS
-    implementation Libs.Room.runtime
-    implementation Libs.Room.ktx
+    implementation Libs.Realm.base
     implementation Libs.Dagger.dagger
 }
