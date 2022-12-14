@@ -1,7 +1,7 @@
 import com.madpickle.buildsrc.Libs
 
 plugins {
-    id 'com.android.library'
+    id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
 }
@@ -10,10 +10,10 @@ android {
     compileSdk 32
 
     defaultConfig {
-        minSdk 24
+        minSdk 26
         targetSdk 32
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -29,19 +29,31 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
+    //MODULES
     implementation project(':core-data')
-    implementation project(':core-network')
     implementation project(':core-android-utils')
-
-    kapt Libs.Dagger.daggerCompiler
 
     //KOTLIN
     implementation Libs.Kotlin.stdLib
 
     //LIBS
-    implementation Libs.Realm.base
+    kapt Libs.Dagger.daggerCompiler
     implementation Libs.Dagger.dagger
+    implementation Libs.Android.core
+    implementation Libs.Android.appCompat
+    implementation Libs.Android.material
+    implementation Libs.Android.constraintLayout
+    implementation Libs.Navigation.navFragment
+    implementation Libs.Navigation.navUi
+    implementation Libs.Navigation.navDynamic
+    testImplementation Libs.Test.junit
+    testImplementation Libs.Test.junitExt
+    androidTestImplementation Libs.Test.junitExt
+    androidTestImplementation Libs.Test.espresso
 }

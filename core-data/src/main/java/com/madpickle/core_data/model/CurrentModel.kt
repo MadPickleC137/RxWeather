@@ -2,7 +2,6 @@ package com.madpickle.core_data.model
 
 import com.madpickle.core_network.model.Current
 import io.realm.RealmObject
-import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmClass
 import io.realm.annotations.Required
 import java.util.*
@@ -14,23 +13,21 @@ import java.util.*
  */
 @RealmClass(embedded = true)
 open class CurrentModel(
-    @PrimaryKey
+    var id: String = UUID.randomUUID().toString(),
+    var lastUpdated: String? = null,
     @Required
-    val id: String = UUID.randomUUID().toString(),
-    var lastUpdated: String?,
-    var region: String?,
-    var temperature: Double?,
-    var isDay: Boolean?,
-    var cloud: Int?,
-    var humidity: Int?,
-    var feelsLike: Double?,
-    var windKmp: Double?,
-    var uv: Double?,
-
+    var region: String = "",
+    var temperature: Double? = null,
+    var isDay: Boolean? = null,
+    var cloud: Int? = 0,
+    var humidity: Int? = 0,
+    var feelsLike: Double? = 0.0,
+    var windKmp: Double? = 0.0,
+    var uv: Double? = 0.0,
     //данные об иконке
     var text: String = "",
     var iconUrl: String = "",
-    var code: Int,
+    var code: Int = 0,
 
     //данные о воздухе
     var co: Float? = null,
@@ -47,7 +44,7 @@ open class CurrentModel(
                 lastUpdated = currentResponse.lastUpdated,
                 temperature = currentResponse.temperature,
                 isDay = currentResponse.isDay == 1,
-                region = region,
+                region = region ?: "",
                 text = currentResponse.condition?.text ?: "",
                 iconUrl = currentResponse.condition?.iconUrl ?: "",
                 code = currentResponse.condition?.code ?: -1,

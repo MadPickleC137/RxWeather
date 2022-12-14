@@ -2,7 +2,6 @@ package com.madpickle.core_data.di
 
 import com.madpickle.core_data.Constants
 import com.madpickle.core_data.realm_db.*
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import io.realm.Realm
@@ -13,7 +12,7 @@ import javax.inject.Singleton
 /**
  * Created by David Madilyan on 25.08.2022.
  */
-@Module(includes = [RepositoryModule::class])
+@Module
 class DatabaseModule {
 
     @Provides
@@ -32,25 +31,25 @@ class DatabaseModule {
     }
 
 
-    @Binds
+    @Provides
     @Singleton
     fun provideCurrentWeatherDao(realm: Realm): CurrentWeatherDao {
         return CurrentWeatherDao(realm)
     }
 
-    @Binds
+    @Provides
     @Singleton
     fun provideForecastDao(realm: Realm): ForecastDao {
         return ForecastDao(realm)
     }
 
-    @Binds
+    @Provides
     @Singleton
     fun provideLocationDao(realm: Realm): LocationDao {
         return LocationDao(realm)
     }
 
-    @Binds
+    @Provides
     @Singleton
     fun provideAstronomyDao(realm: Realm): AstronomyDao {
         return AstronomyDao(realm)

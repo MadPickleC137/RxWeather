@@ -2,7 +2,6 @@ package com.madpickle.core_data.model
 
 import com.madpickle.core_network.model.Astro
 import io.realm.RealmObject
-import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmClass
 import io.realm.annotations.Required
 import java.util.*
@@ -12,17 +11,16 @@ import java.util.*
  */
 @RealmClass(embedded = true)
 open class AstronomyModel(
-    @PrimaryKey
+    var idAstronomy: String = UUID.randomUUID().toString(),
+    var date: String? = null,                                                                              //Дата в yyyy-MM-dd формате, по этому свойству осуществляется выборка из бд
+    var sunrise: String? = null,
+    var sunset: String? = null,
+    var moonrise: String? = null,
+    var moonset: String? = null,
+    var moonPhase: String? = null,
     @Required
-    val id: String = UUID.randomUUID().toString(),
-    var date: String?,                                                                              //Дата в yyyy-MM-dd формате, по этому свойству осуществляется выборка из бд
-    var sunrise: String?,
-    var sunset: String?,
-    var moonrise: String?,
-    var moonset: String?,
-    var moonPhase: String?,
-    var region: String?,
-    var moonIlluminate: String?,
+    var region: String = "",
+    var moonIlluminate: String? = null,
 ): RealmObject() {
     val textMoonPhase get() = moonPhase?.replace(" ", "")?.let { MoonPhase.valueOf(it) } ?: MoonPhase.Empty
 

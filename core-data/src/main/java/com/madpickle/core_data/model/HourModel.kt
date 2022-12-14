@@ -2,9 +2,7 @@ package com.madpickle.core_data.model
 
 import com.madpickle.core_network.model.HourForecast
 import io.realm.RealmObject
-import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmClass
-import io.realm.annotations.Required
 import java.util.*
 import kotlin.random.Random
 
@@ -13,24 +11,22 @@ import kotlin.random.Random
  */
 @RealmClass(embedded = true)
 open class HourModel(
-    @PrimaryKey
-    @Required
-    val id: String = UUID.randomUUID().toString(),
+    var idHour: String = UUID.randomUUID().toString(),
     var idParentDay: Long = 0,                                                                          //ключ по поиску элементов в таблице
-    var time: String?,
-    var minTemp: Float?,
-    var isDay: Boolean?,
-    var isRain: Boolean?,
-    var isShow: Boolean?,
-    var chanceRain: Int?,
-    var chanceSnow: Int?,
-    var humidity: Int?,                                                                             //влажность
-    var cloud: Int?,
-    var feelsLike: Float?,                                                                          //температура по ощущениям
-    var uv: Double?,
+    var time: String? = null,
+    var minTemp: Float? = null,
+    var isDay: Boolean? = null,
+    var isRain: Boolean? = null,
+    var isShow: Boolean? = null,
+    var chanceRain: Int? = null,
+    var chanceSnow: Int? = null,
+    var humidity: Int? = null,                                                                             //влажность
+    var cloud: Int? = null,
+    var feelsLike: Float? = null,                                                                          //температура по ощущениям
+    var uv: Double? = null,
     var text: String = "",
     var iconUrl: String = "",
-    var code: Int,
+    var code: Int = 0,
 ): RealmObject() {
 
     companion object{

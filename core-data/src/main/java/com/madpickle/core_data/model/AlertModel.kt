@@ -2,7 +2,6 @@ package com.madpickle.core_data.model
 
 import com.madpickle.core_network.model.Alert
 import io.realm.RealmObject
-import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmClass
 import io.realm.annotations.Required
 import java.util.*
@@ -12,19 +11,18 @@ import java.util.*
  */
 @RealmClass(embedded = true)
 open class AlertModel(
-    @PrimaryKey
+    var id: String = UUID.randomUUID().toString(),
+    var headline: String? = null,
+    var areas: String? = null,
     @Required
-    val id: String = UUID.randomUUID().toString(),
-    var headline: String?,
-    var areas: String?,
-    var region: String,                                                                             //регион по которому будут определяться алерты в кэше
-    var note: String?,
-    var effective: String?,
-    var expires: String?,
-    var instruction: String?,
-    var category: String?,                                                                          // категория на английском
-    var event: String?,                                                                             //тип придупреждения
-    var desc: String?,
+    var region: String = "",                                                                             //регион по которому будут определяться алерты в кэше
+    var note: String? = null,
+    var effective: String? = null,
+    var expires: String? = null,
+    var instruction: String? = null,
+    var category: String? = null,                                                                          // категория на английском
+    var event: String? = null,                                                                             //тип придупреждения
+    var desc: String? = null,
 ) : RealmObject() {
     companion object{
         fun InitAlertModel(alert: Alert, regionCurrent: String?): AlertModel{

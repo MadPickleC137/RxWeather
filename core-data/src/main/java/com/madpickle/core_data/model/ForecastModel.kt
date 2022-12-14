@@ -15,12 +15,12 @@ import java.util.*
 open class ForecastModel(
     @PrimaryKey
     @Required
-    val id: String = UUID.randomUUID().toString(),
-    val region: String? = null,
-    val current: CurrentModel? = null,
-    val location: LocationModel? = null,
-    val daysForecast: RealmList<DayModel>? = null,
-    val alerts: RealmList<AlertModel>? = null
+    var id: String = UUID.randomUUID().toString(),
+    var region: String? = null,
+    var current: CurrentModel? = null,
+    var location: LocationModel? = null,
+    var daysForecast: RealmList<DayModel>? = null,
+    var alerts: RealmList<AlertModel>? = null
 ): RealmObject() {
     companion object{
         fun InitForecastWithDays(response: ForecastResponse): ForecastModel {

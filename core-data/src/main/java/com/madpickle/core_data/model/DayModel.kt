@@ -3,7 +3,6 @@ package com.madpickle.core_data.model
 import com.madpickle.core_network.model.Forecast
 import io.realm.RealmList
 import io.realm.RealmObject
-import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmClass
 import io.realm.annotations.Required
 import java.util.*
@@ -14,21 +13,20 @@ import kotlin.random.Random
  */
 @RealmClass(embedded = true)
 open class DayModel(
-    @PrimaryKey
+    var idDayKey: String = UUID.randomUUID().toString(),
+    var idDay: Long = 0,                                                                                //ключ по поиску зависимых объектов в  других таблицах
     @Required
-    val id: String = UUID.randomUUID().toString(),
-    val idDay: Long,                                                                                //ключ по поиску зависимых объектов в  других таблицах
-    val region: String,                                                                             //регион по которому будут кэшироваться прогноз по дням
-    val maxTemp: Float?,
-    val dateForecast: String?,
-    val minTemp: Float?,
-    val avgTemp: Float?,
-    val uv: Double?,
-    val text: String = "",
-    val iconUrl: String = "",
-    val code: Int,
-    val astro: AstronomyModel? = null,
-    val hours: RealmList<HourModel>? = null
+    var region: String = "",                                                                             //регион по которому будут кэшироваться прогноз по дням
+    var maxTemp: Float? = null,
+    var dateForecast: String? = null,
+    var minTemp: Float? = null,
+    var avgTemp: Float? = null,
+    var uv: Double? = null,
+    var text: String = "",
+    var iconUrl: String = "",
+    var code: Int = 0,
+    var astro: AstronomyModel? = null,
+    var hours: RealmList<HourModel>? = null
 ) : RealmObject() {
 
     companion object{

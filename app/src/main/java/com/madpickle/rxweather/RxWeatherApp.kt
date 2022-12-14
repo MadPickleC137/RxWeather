@@ -1,7 +1,8 @@
 package com.madpickle.rxweather
 
 import android.app.Application
-import com.madpickle.core_di.CoreModule
+import com.madpickle.feature_current_forecast.di.CurrentsComponentDependencies
+import com.madpickle.feature_current_forecast.di.FeatureCurrentComponentProvider
 import com.madpickle.rxweather.di.AppComponent
 import com.madpickle.rxweather.di.AppComponentProvider
 import com.madpickle.rxweather.di.DaggerAppComponent
@@ -9,21 +10,19 @@ import com.madpickle.rxweather.di.DaggerAppComponent
 /**
  * Created by David Madilyan on 27.08.2022.
  */
-class RxWeatherApp: Application(), AppComponentProvider {
-
-    private val coreModule: CoreModule by lazy {
-        CoreModule(this)
-    }
+class RxWeatherApp: Application(), AppComponentProvider, FeatureCurrentComponentProvider {
+    lateinit var appComponent: AppComponent
 
     override fun onCreate() {
         super.onCreate()
-        (this as AppComponentProvider)
-            .getApplicationComponent()
-            .inject(this)
+        appComponent = DaggerAppComponent.factory().create(this)
     }
 
     override fun getApplicationComponent(): AppComponent {
-        return DaggerAppComponent.builder()
-            .build()
+        return appComponent
+    }
+
+    override fun getCurrentComponentDependencies(): CurrentsComponentDependencies {
+        return appComponent
     }
 }

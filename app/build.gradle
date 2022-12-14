@@ -38,9 +38,11 @@ android {
 
 dependencies {
     //MODULES
-    implementation project(':core-di')
-    implementation project(':core-android-utils')
     implementation project(':core-data')
+    implementation project(':core-network')
+    implementation project(':core-android-utils')
+    implementation project(':feature-current-forecast')
+    implementation project(':feature-days-forecast')
 
     //KOTLIN
     implementation Libs.Kotlin.stdLib

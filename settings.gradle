@@ -20,5 +20,6 @@ rootProject.name = "RxWeather"
 include ':app'
 include ':core-android-utils'
 include ':core-data'
-include ':core-di'
 include ':core-network'
+include ':feature-current-forecast'
+include ':feature-days-forecast'

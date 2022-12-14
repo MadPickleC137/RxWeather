@@ -3,7 +3,6 @@ package com.madpickle.core_data.model
 import com.madpickle.core_network.model.Location
 import com.madpickle.core_network.model.Place
 import io.realm.RealmObject
-import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmClass
 import io.realm.annotations.Required
 import java.util.*
@@ -14,23 +13,22 @@ import java.util.*
 @RealmClass(embedded = true)
 open
 class LocationModel(
-    @PrimaryKey
+    var idLocation: String = UUID.randomUUID().toString(),
+    var name: String? = null,
     @Required
-    val id: String = UUID.randomUUID().toString(),
-    var name: String?,
-    var region: String?,
-    var country: String?,
-    var lat: Double?,
-    var lon: Double?,
-    var tzId: String?,
-    var localtimeEpoch: Long?,
-    var localtime: String?,
+    var region: String = "",
+    var country: String? = null,
+    var lat: Double? = null,
+    var lon: Double? = null,
+    var tzId: String? = null,
+    var localtimeEpoch: Long? = null,
+    var localtime: String? = null,
 ): RealmObject() {
     companion object{
         fun InitLocation(location: Location): LocationModel{
             return LocationModel(
                 name = location.name,
-                region = location.region,
+                region = location.region ?: "",
                 country = location.country,
                 lat = location.lat,
                 lon = location.lon,
@@ -43,7 +41,7 @@ class LocationModel(
         fun InitLocation(place: Place): LocationModel{
             return LocationModel(
                 name = place.name,
-                region = place.region,
+                region = place.region ?: "",
                 country = place.country,
                 lat = place.lat,
                 lon = place.lon,
