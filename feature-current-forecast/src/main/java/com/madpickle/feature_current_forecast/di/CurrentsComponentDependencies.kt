@@ -1,10 +1,10 @@
 package com.madpickle.feature_current_forecast.di
 
-import com.madpickle.core_data.source.CurrentWeatherRepository
+import com.madpickle.core_data.repositories.CurrentWeatherRepository
 
 /**
  * Created by David Madilyan on 14.12.2022.
  */
 interface CurrentsComponentDependencies {
-    fun getRepo(): CurrentWeatherRepository
+    fun getCurrentRepo(): CurrentWeatherRepository
 }

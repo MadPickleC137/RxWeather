@@ -1,12 +1,11 @@
 package com.madpickle.core_data.di
 
 import com.madpickle.core_data.realm_db.*
-import com.madpickle.core_data.source.*
+import com.madpickle.core_data.repositories.*
 import com.madpickle.core_network.IWeatherNetworkSource
 import com.madpickle.core_network.di.WeatherServiceModule
 import dagger.Module
 import dagger.Provides
-import javax.inject.Singleton
 
 /**
  * Created by David Madilyan on 28.08.2022.

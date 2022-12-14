@@ -2,8 +2,11 @@ package com.madpickle.rxweather.di
 
 import android.app.Application
 import android.content.Context
-import com.madpickle.core_data.source.CurrentWeatherRepository
+import com.madpickle.core_data.repositories.AstronomyRepository
+import com.madpickle.core_data.repositories.CurrentWeatherRepository
+import com.madpickle.core_data.repositories.ForecastRepository
 import com.madpickle.feature_current_forecast.di.CurrentsComponentDependencies
+import com.madpickle.feature_days_forecast.di.ForecastComponentDependencies
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -17,9 +20,13 @@ import javax.inject.Singleton
         CoreModule::class,
     ]
 )
-interface AppComponent: CurrentsComponentDependencies {
+interface AppComponent: CurrentsComponentDependencies, ForecastComponentDependencies {
 
-    override fun getRepo(): CurrentWeatherRepository
+    override fun getCurrentRepo(): CurrentWeatherRepository
+
+    override fun getForecastRepo(): ForecastRepository
+
+    override fun getAstronomyRepo(): AstronomyRepository
 
     fun inject(application: Application)
 

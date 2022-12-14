@@ -1,7 +1,7 @@
 package com.madpickle.feature_current_forecast.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.madpickle.core_data.source.CurrentWeatherRepository
+import com.madpickle.core_data.repositories.CurrentWeatherRepository
 import javax.inject.Inject
 
 /**

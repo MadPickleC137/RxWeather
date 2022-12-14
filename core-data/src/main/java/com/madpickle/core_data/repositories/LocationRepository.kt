@@ -1,4 +1,4 @@
-package com.madpickle.core_data.source
+package com.madpickle.core_data.repositories
 
 import com.madpickle.core_data.model.LocationModel
 import com.madpickle.core_data.realm_db.LocationDao

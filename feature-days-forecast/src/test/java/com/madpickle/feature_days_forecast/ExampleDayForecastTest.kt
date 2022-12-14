@@ -1,4 +1,4 @@
-package com.madpickle.feature_current_forecast
+package com.madpickle.feature_days_forecast
 
 import org.junit.Test
 
@@ -9,7 +9,7 @@ import org.junit.Assert.*
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class ExampleUnitTest {
+class ExampleDayForecastTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)

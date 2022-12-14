@@ -1,4 +1,4 @@
-package com.madpickle.core_data.source
+package com.madpickle.core_data.repositories
 
 import com.madpickle.core_data.model.CurrentModel
 import com.madpickle.core_data.RepositoryListener
