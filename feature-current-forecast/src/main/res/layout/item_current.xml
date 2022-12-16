@@ -21,19 +21,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:textColor="@color/text_white_100"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Senin, 20 Desember 2021" />
-
-        <TextView
-            android:id="@+id/time_current"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:textColor="@color/text_white_100"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="3.30 PM" />
+            tools:text="Senin, 20 Desember 2021" />
 
         <ImageView
             android:id="@+id/icon_current"

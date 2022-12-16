@@ -14,8 +14,6 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
-            app:elevation="1dp"
-            app:expanded="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -23,18 +21,13 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/toolbar_background"
-                android:elevation="1dp"
-                app:layout_collapseMode="none"
                 app:navigationIcon="@drawable/ic_settings"
-                app:title="@string/current_locations"
-                app:titleCentered="true"
-                app:titleTextAppearance="@style/Toolbar.TitleText" />
+                app:title="@string/current_locations" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/current_detail"
+            android:id="@+id/currents"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="16dp"
@@ -60,5 +53,20 @@
             app:fabSize="normal"
             android:layout_gravity="bottom|end"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
+    <FrameLayout
+        android:id="@+id/progress_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:visibility="gone"
+        android:background="@color/bg_progress_mask"
+        android:layout_marginTop="56dp">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/indicator_progress"
+            android:layout_gravity="center"/>
+    </FrameLayout>
 </FrameLayout>

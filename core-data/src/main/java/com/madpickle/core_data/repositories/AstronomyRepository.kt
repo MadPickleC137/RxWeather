@@ -14,7 +14,6 @@ import javax.inject.Inject
  *
  * Получает информацию о восходе, закате и что то о луне
  */
-
 interface IAstronomyRepository {
     fun getAstronomy( region: String, date: String): Observable<AstronomyModel>
     fun deleteByRegion(region: String): Completable

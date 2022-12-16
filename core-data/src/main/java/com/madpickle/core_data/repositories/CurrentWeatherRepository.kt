@@ -9,6 +9,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Notification
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -29,6 +30,7 @@ interface ICurrentWeatherRepository {
     fun getCurrentObservable(region: String, error: RepositoryListener): Observable<CurrentModel>
     fun insertCurrentModel(currentModel: CurrentModel): Completable
     fun deleteCurrentModel(region: String): Completable
+    fun getAllCurrents(): Observable<List<CurrentModel>>
 }
 
 class CurrentWeatherRepository @Inject constructor(
@@ -67,5 +69,9 @@ class CurrentWeatherRepository @Inject constructor(
 
     override fun deleteCurrentModel(region: String): Completable {
         return dao.deleteByRegion(region)
+    }
+
+    override fun getAllCurrents(): Observable<List<CurrentModel>> {
+        return dao.getAllCurrents().toObservable()
     }
 }

@@ -4,6 +4,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'realm-android'
 }
 
 android {
@@ -56,6 +57,8 @@ dependencies {
     implementation Libs.Android.constraintLayout
     implementation Libs.Navigation.navFragment
     implementation Libs.Navigation.navUi
+    implementation Libs.Android.fragmentExt
+    implementation Libs.Realm.base
     implementation Libs.Navigation.navDynamic
     testImplementation Libs.Test.junit
     testImplementation Libs.Test.junitExt

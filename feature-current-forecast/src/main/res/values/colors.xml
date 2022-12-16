@@ -12,4 +12,6 @@
     <color name="expanded_appbar_bg_center">#3764D7</color>
     <color name="expanded_appbar_bg_end">#335FD1</color>
     <color name="bg_card_astro">#1A2237</color>
+    <color name="bg_progress_mask">#882954A8</color>
+    <color name="indicator_progress">#E6DBDB</color>
 </resources>

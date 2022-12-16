@@ -45,7 +45,11 @@ dependencies {
     //LIBS
     kapt Libs.Dagger.daggerCompiler
     implementation Libs.Dagger.dagger
+    implementation Libs.Coil.coilKt
+    implementation Libs.RxJava.rxKotlin
+    implementation Libs.RxJava.rxAndroid
     implementation Libs.Android.core
+    implementation Libs.Logs.timber
     implementation Libs.Android.appCompat
     implementation Libs.Android.material
     implementation Libs.Android.constraintLayout

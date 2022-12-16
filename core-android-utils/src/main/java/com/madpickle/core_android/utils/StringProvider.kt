@@ -1,4 +1,4 @@
-package com.madpickle.core_ext.utils
+package com.madpickle.core_android.utils
 
 import android.app.Application
 import androidx.annotation.StringRes

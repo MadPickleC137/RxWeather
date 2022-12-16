@@ -38,6 +38,13 @@ open class CurrentModel(
     var pm10: Float? = null,
 ): RealmObject() {
 
+    fun getIconRes(): Int{
+       return when(text){
+
+            else -> 0
+        }
+    }
+
     companion object{
         fun InitCurrent(currentResponse: Current, region: String?): CurrentModel {
             return CurrentModel(

@@ -41,8 +41,7 @@ dependencies {
     implementation Libs.Kotlin.stdLib
     //LIBS
     implementation Libs.Android.core
-    implementation Libs.Android.appCompat
-    implementation Libs.Lifecycle.liveData
+    implementation Libs.Logs.timber
     implementation Libs.RxJava.rxKotlin
     implementation Libs.RxJava.rxAndroid
     implementation Libs.Dagger.dagger

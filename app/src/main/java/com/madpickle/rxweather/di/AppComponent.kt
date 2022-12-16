@@ -2,6 +2,7 @@ package com.madpickle.rxweather.di
 
 import android.app.Application
 import android.content.Context
+import androidx.lifecycle.ViewModelProvider
 import com.madpickle.core_data.repositories.AstronomyRepository
 import com.madpickle.core_data.repositories.CurrentWeatherRepository
 import com.madpickle.core_data.repositories.ForecastRepository
@@ -18,6 +19,7 @@ import javax.inject.Singleton
 @Component(
     modules = [
         CoreModule::class,
+        ViewModelModule::class
     ]
 )
 interface AppComponent: CurrentsComponentDependencies, ForecastComponentDependencies {
@@ -27,6 +29,8 @@ interface AppComponent: CurrentsComponentDependencies, ForecastComponentDependen
     override fun getForecastRepo(): ForecastRepository
 
     override fun getAstronomyRepo(): AstronomyRepository
+
+    fun getViewModelFactory(): ViewModelProvider.Factory
 
     fun inject(application: Application)
 

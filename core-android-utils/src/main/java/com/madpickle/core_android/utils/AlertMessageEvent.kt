@@ -1,4 +1,4 @@
-package com.madpickle.core_ext.utils
+package com.madpickle.core_android.utils
 
 /**
  * Created by David Madilyan on 25.08.2022.
