@@ -1,4 +1,4 @@
-package com.madpickle.core_android
+package com.madpickle.core_android.view
 
 import android.os.Bundle
 import android.view.LayoutInflater

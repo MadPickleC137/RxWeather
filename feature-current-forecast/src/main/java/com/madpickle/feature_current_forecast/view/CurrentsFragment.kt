@@ -6,9 +6,13 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.madpickle.core_data.model.CurrentModel
-import com.madpickle.core_android.BaseFragment
+import com.madpickle.core_android.view.BaseFragment
 import com.madpickle.core_android.createViewModel
+import com.madpickle.core_android.navigateTo
 import com.madpickle.core_android.observe
+import com.madpickle.core_android.screens.Screen
+import com.madpickle.core_android.view.ResultView
+import com.madpickle.feature_current_forecast.R
 import com.madpickle.feature_current_forecast.databinding.FragmentCurrentsBinding
 import com.madpickle.feature_current_forecast.di.DaggerFeatureCurrentComponent
 import com.madpickle.feature_current_forecast.di.FeatureCurrentComponentProvider
@@ -30,17 +34,29 @@ class CurrentsFragment : BaseFragment<FragmentCurrentsBinding>() {
         currentsComponent.injectCurrentsFragment(this)
     }
 
-    override fun start() {
-        binding.currents.layoutManager = LinearLayoutManager(context)
-        binding.currents.adapter = currentsAdapter
+    override fun onResume() {
+        super.onResume()
         viewModel.getCurrents()
+    }
+
+    override fun start() {
+        initViews()
         observe(viewModel.state){
             when(it){
                 CurrentsViewState.Failed -> setErrorView()
                 CurrentsViewState.InProgress -> setProgressView()
+                CurrentsViewState.Empty -> setEmptyResult()
                 is CurrentsViewState.Response -> setCurrentsListView(it.currents)
                 else -> {}
             }
+        }
+    }
+
+    private fun initViews() {
+        binding.currents.layoutManager = LinearLayoutManager(context)
+        binding.currents.adapter = currentsAdapter
+        binding.addLocation.setOnClickListener {
+            navigateTo(Screen.SelectRegion())
         }
     }
 
@@ -48,12 +64,23 @@ class CurrentsFragment : BaseFragment<FragmentCurrentsBinding>() {
         currentsAdapter.initItems(currents)
     }
 
+    private fun setEmptyResult(){
+        binding.progressLayout.isVisible = false
+        binding.resultBanner.isVisible = true
+    }
+
     private fun setErrorView() {
         Timber.e(CurrentsFragment::class.java.simpleName)
+        binding.progressLayout.isVisible = false
+        binding.resultBanner.isVisible = true
+        binding.resultBanner.initResultView(
+            ResultView.PropertyView.TitleText(getString(R.string.currents_error_title)),
+            ResultView.PropertyView.Icon(R.drawable.ic_error),
+            ResultView.PropertyView.SubTitleText(getString(R.string.currents_error_text))
+        )
     }
 
     private fun setProgressView() {
         binding.progressLayout.isVisible = true
     }
-
 }

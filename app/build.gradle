@@ -44,6 +44,7 @@ dependencies {
     implementation project(':core-android-utils')
     implementation project(':feature-current-forecast')
     implementation project(':feature-days-forecast')
+    implementation project(':feature-places')
 
     //KOTLIN
     implementation Libs.Kotlin.stdLib
@@ -54,6 +55,7 @@ dependencies {
     implementation Libs.Android.core
     implementation Libs.Android.appCompat
     implementation Libs.Android.material
+    implementation Libs.Logs.timber
     implementation Libs.Android.constraintLayout
     implementation Libs.Navigation.navFragment
     implementation Libs.Navigation.navUi

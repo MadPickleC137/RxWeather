@@ -5,7 +5,6 @@ import com.madpickle.core_data.executeSingle
 import com.madpickle.core_data.model.LocationModel
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
-import io.realm.Realm
 import io.realm.kotlin.where
 
 /**
@@ -18,28 +17,22 @@ import io.realm.kotlin.where
 class LocationDao {
 
     fun getLocation(): Single<LocationModel>{
-        return Realm.getDefaultInstance().use{
-            it.executeSingle {
-                it.where<LocationModel>().findFirstAsync()
-            }
+        return executeSingle {
+            it.where<LocationModel>().findFirst()
         }
     }
 
     fun insertOrUpdate(model: LocationModel): Completable {
-        return Realm.getDefaultInstance().use{ realm ->
-            realm.executeCompletable {
-                realm.insertOrUpdate(model)
-            }
+        return executeCompletable {
+            it.insertOrUpdate(model)
         }
     }
 
     fun deleteAll(): Completable {
-        return Realm.getDefaultInstance().use{ realm ->
-            realm.executeCompletable {
-                realm.where<LocationModel>()
-                    .findAll()
-                    .deleteAllFromRealm()
-            }
+        return executeCompletable {
+            it.where<LocationModel>()
+                .findAll()
+                .deleteAllFromRealm()
         }
     }
 }

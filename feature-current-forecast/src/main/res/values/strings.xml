@@ -12,4 +12,8 @@
     <string name="uf_index">Индекс УФ</string>
     <string name="delete_region">Удалить регион</string>
     <string name="action_menu_more">Действия</string>
+    <string name="currents_result_text">Вы можете добавить новые места нажав на кнопку</string>
+    <string name="currents_result_title">У вас пока нет мест</string>
+    <string name="currents_error_text">Повторите попытку позже</string>
+    <string name="currents_error_title">Непредвиденная ошибка</string>
 </resources>

@@ -47,12 +47,14 @@
             android:textSize="17sp"
             app:icon="@drawable/ic_add"
             app:iconTint="@color/white"
-            android:backgroundTint="#4F80FA"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/gray_600"
             android:textColor="@color/text_button_white"
             app:borderWidth="0dp"
             app:fabSize="normal"
             android:layout_gravity="bottom|end"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
     <FrameLayout
         android:id="@+id/progress_layout"
         android:layout_width="match_parent"
@@ -69,4 +71,17 @@
             android:indeterminateTint="@color/indicator_progress"
             android:layout_gravity="center"/>
     </FrameLayout>
+
+    <com.madpickle.core_android.view.ResultView
+        android:id="@+id/result_banner"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:icon="@drawable/ic_find"
+        app:title="@string/currents_result_title"
+        app:text="@string/currents_result_text"
+        android:animateLayoutChanges="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"/>
+
 </FrameLayout>

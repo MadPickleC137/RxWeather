@@ -59,5 +59,4 @@ dependencies {
     testImplementation Libs.Test.junit
     testImplementation Libs.Test.junitExt
     androidTestImplementation Libs.Test.junitExt
-    androidTestImplementation Libs.Test.espresso
 }

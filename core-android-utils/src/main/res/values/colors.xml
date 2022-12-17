@@ -1,0 +1,7 @@
+<resources>
+    <color name="light_blue_400">#FF29B6F6</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="gray_400">#C5E1A5</color>
+    <color name="gray_600">#90CAF9</color>
+    <color name="text_base">#414355</color>
+</resources>

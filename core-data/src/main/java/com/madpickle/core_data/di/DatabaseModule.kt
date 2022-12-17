@@ -12,8 +12,6 @@ import javax.inject.Singleton
 @Module
 class DatabaseModule {
 
-
-
     @Provides
     @Singleton
     fun provideCurrentWeatherDao(): CurrentWeatherDao {

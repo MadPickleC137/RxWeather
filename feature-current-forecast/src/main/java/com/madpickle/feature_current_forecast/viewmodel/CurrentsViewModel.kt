@@ -27,7 +27,10 @@ class CurrentsViewModel @Inject constructor(private val repository: CurrentWeath
                 _state.postValue(CurrentsViewState.Failed)
             }
             .subscribe {
-                _state.postValue(CurrentsViewState.Response(it))
+                if(it.isEmpty())
+                    _state.postValue(CurrentsViewState.Empty)
+                else
+                    _state.postValue(CurrentsViewState.Response(it))
             }
     }
 }

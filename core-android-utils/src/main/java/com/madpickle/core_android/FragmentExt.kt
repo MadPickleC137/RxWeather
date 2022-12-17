@@ -6,6 +6,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.madpickle.core_android.di.ViewModelFactoryProvider
+import com.madpickle.core_android.screens.NavigationListener
+import com.madpickle.core_android.screens.Screen
 import com.madpickle.core_android.utils.AlertMessageEvent
 import com.madpickle.core_android.utils.Event
 import com.madpickle.core_android.utils.EventObserver
@@ -23,6 +25,14 @@ fun <T> Fragment.observe(liveData: LiveData<T>, observer: (T?) -> Unit) {
 
 fun <T> Fragment.observeOnEvent(liveData: LiveData<Event<T>>, observer: (T) -> Unit) {
     liveData.observe(viewLifecycleOwner, EventObserver { observer(it) })
+}
+
+fun Fragment.navigateTo(screen: Screen){
+    (activity as? NavigationListener)?.navigateTo(screen)
+}
+
+fun Fragment.onBack(){
+    (activity as? NavigationListener)?.onBack()
 }
 
 fun Fragment.showAlertDialog(event: AlertMessageEvent) = context?.run {

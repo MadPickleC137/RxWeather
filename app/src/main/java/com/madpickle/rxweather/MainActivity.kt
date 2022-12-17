@@ -3,37 +3,43 @@ package com.madpickle.rxweather
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import androidx.navigation.findNavController
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.madpickle.core_android.screens.NavigationListener
 import com.madpickle.core_android.screens.Screen
 import com.madpickle.rxweather.databinding.ActivityMainBinding
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity(), NavigationListener {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
-
+        WindowCompat.setDecorFitsSystemWindows(window, true)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        val navHost = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
+        navController = navHost.navController
         setContentView(binding.root)
     }
 
     override fun onBack() {
-        findNavController(R.navigation.nav_graph).navigateUp()
+        Timber.i("Навигация назад")
+        navController.navigateUp()
     }
 
     override fun navigateTo(screen: Screen) {
-        val navController = findNavController(R.navigation.nav_graph)
         when(screen){
-            is Screen.CurrentsList -> TODO()
-            is Screen.ForecastDetail -> TODO()
-            is Screen.SelectRegion -> TODO()
+            is Screen.CurrentsList -> {}
+            is Screen.ForecastDetail -> navController.navigate(R.id.action_currentsFragment_to_forecastFragment)
+            is Screen.SelectRegion -> navController.navigate(R.id.action_currentsFragment_to_addPlaceFragment)
         }
+        Timber.i("Экран: ${screen.title}")
     }
 
     override fun exit() {
+        Timber.i("Выход")
         finish()
     }
 }
