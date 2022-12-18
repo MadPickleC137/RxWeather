@@ -1,7 +1,8 @@
 package com.madpickle.core_data.repositories
 
+import com.madpickle.core_android.repository.BaseRepository
 import com.madpickle.core_data.model.CurrentModel
-import com.madpickle.core_data.RepositoryListener
+import com.madpickle.core_android.repository.RepositoryListener
 import com.madpickle.core_data.realm_db.CurrentWeatherDao
 import com.madpickle.core_network.IWeatherNetworkSource
 import com.madpickle.core_network.model.CurrentResponse
@@ -26,7 +27,7 @@ import javax.inject.Inject
  *                                 - API
  */
 interface ICurrentWeatherRepository {
-    fun getCurrentObservable(region: String, error: RepositoryListener): Observable<CurrentModel>
+    fun getCurrentObservable(region: String, error: com.madpickle.core_android.repository.RepositoryListener): Observable<CurrentModel>
     fun insertCurrentModel(currentModel: CurrentModel): Completable
     fun deleteCurrentModel(region: String): Completable
     fun getAllCurrents(): Observable<List<CurrentModel>>
@@ -35,14 +36,14 @@ interface ICurrentWeatherRepository {
 class CurrentWeatherRepository @Inject constructor(
     private val dao: CurrentWeatherDao,
     private val networkSource: IWeatherNetworkSource
-): ICurrentWeatherRepository {
+): BaseRepository(), ICurrentWeatherRepository {
 
     /**
      * Получает модель из двух разных источников данных и синхронизирует Observable
      * @param region сторока по которой получаем данные
      * @param error Слушатель на случай прихода с микросервиса ошибки
      * */
-    override fun getCurrentObservable(region: String, error: RepositoryListener): Observable<CurrentModel> {
+    override fun getCurrentObservable(region: String, error: com.madpickle.core_android.repository.RepositoryListener): Observable<CurrentModel> {
         return Observable.concatArrayEager(
             dao.getCurrentByRegion(region).toObservable(),
             networkSource.getCurrentWeather(region)

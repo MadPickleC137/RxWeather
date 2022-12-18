@@ -1,5 +1,6 @@
 package com.madpickle.core_data.repositories
 
+import com.madpickle.core_android.repository.BaseRepository
 import com.madpickle.core_data.model.AstronomyModel
 import com.madpickle.core_data.realm_db.AstronomyDao
 import com.madpickle.core_network.IWeatherNetworkSource
@@ -19,9 +20,10 @@ interface IAstronomyRepository {
     fun deleteByRegion(region: String): Completable
 }
 
-class AstronomyRepository @Inject constructor(private val astronomyDao: AstronomyDao,
-                                              private val networkSource: IWeatherNetworkSource
-): IAstronomyRepository {
+class AstronomyRepository @Inject constructor(
+    private val astronomyDao: AstronomyDao,
+    private val networkSource: IWeatherNetworkSource
+): BaseRepository(), IAstronomyRepository {
 
     /**
      * Получает актуальные данные из кэша и сети, данные полученные из сети записываются в кэш

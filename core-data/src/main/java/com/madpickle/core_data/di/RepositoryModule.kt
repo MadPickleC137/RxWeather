@@ -1,5 +1,6 @@
 package com.madpickle.core_data.di
 
+import com.madpickle.core_android.repository.BaseRepository
 import com.madpickle.core_data.realm_db.*
 import com.madpickle.core_data.repositories.*
 import com.madpickle.core_network.IWeatherNetworkSource

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Base.Theme.RxWeather" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="appBarLayoutStyle">@style/BaseAppbarLayoutStyle</item>
+        <item name="toolbarStyle">@style/BaseToolbarStyle</item>
+        <item name="materialCardViewStyle">@style/BaseCardViewStyle</item>
+    </style>
+</resources>

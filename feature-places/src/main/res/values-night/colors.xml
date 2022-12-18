@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="text_button_gray">#494343</color>
+    <color name="text_button_white">#FFFFFF</color>
+    <color name="text_white_100">#FFF</color>
+    <color name="text_white_80">#DDFFFFFF</color>
+    <color name="item_current_detail_layout">#4598A0D6</color>
+    <color name="toolbar_background">#25ACC1EC</color>
+    <color name="expanded_appbar_bg_start">#4F80FA</color>
+    <color name="expanded_appbar_bg_center">#3764D7</color>
+    <color name="expanded_appbar_bg_end">#335FD1</color>
+    <color name="bg_card_astro">#1A2237</color>
+    <color name="bg_progress_mask">#882954A8</color>
+    <color name="indicator_progress">#E6DBDB</color>
+</resources>

@@ -1,4 +1,4 @@
-package com.madpickle.feature_places
+package com.madpickle.feature_places.viewmodel
 
 import androidx.lifecycle.ViewModel
 import javax.inject.Inject

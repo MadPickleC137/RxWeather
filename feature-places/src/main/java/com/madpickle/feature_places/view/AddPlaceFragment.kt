@@ -1,4 +1,4 @@
-package com.madpickle.feature_places
+package com.madpickle.feature_places.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

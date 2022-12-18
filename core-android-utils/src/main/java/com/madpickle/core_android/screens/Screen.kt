@@ -1,5 +1,7 @@
 package com.madpickle.core_android.screens
 
+import androidx.navigation.NavController
+
 /**
  * Created by David Madilyan on 15.12.2022.
  */

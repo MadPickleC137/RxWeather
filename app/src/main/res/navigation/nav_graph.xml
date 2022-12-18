@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/addPlaceFragment"
-        android:name="com.madpickle.feature_places.AddPlaceFragment"
+        android:name="com.madpickle.feature_places.view.AddPlaceFragment"
         android:label="AddPlaceFragment" />
 
     <fragment

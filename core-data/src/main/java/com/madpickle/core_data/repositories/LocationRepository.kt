@@ -1,5 +1,6 @@
 package com.madpickle.core_data.repositories
 
+import com.madpickle.core_android.repository.BaseRepository
 import com.madpickle.core_data.model.LocationModel
 import com.madpickle.core_data.realm_db.LocationDao
 import com.madpickle.core_network.IWeatherNetworkSource
@@ -21,8 +22,10 @@ interface ILocationRepository{
     fun deleteLocation(): Completable
 }
 
-class LocationRepository@Inject constructor(private val dao: LocationDao,
-                                            private val networkSource: IWeatherNetworkSource): ILocationRepository {
+class LocationRepository@Inject constructor(
+    private val dao: LocationDao,
+    private val networkSource: IWeatherNetworkSource
+): BaseRepository(), ILocationRepository {
 
     /**
      * Реализация  запроса в сеть для быстрого поиска места, необходимо для выборки прогнозов

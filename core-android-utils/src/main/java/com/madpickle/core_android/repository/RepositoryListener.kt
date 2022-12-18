@@ -1,4 +1,4 @@
-package com.madpickle.core_data
+package com.madpickle.core_android.repository
 
 /**
  * Created by David Madilyan on 07.12.2022.

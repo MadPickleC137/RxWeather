@@ -1,12 +1,9 @@
 package com.madpickle.feature_current_forecast.viewmodel
 
-import android.os.Looper
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.madpickle.core_data.repositories.CurrentWeatherRepository
 import com.madpickle.feature_current_forecast.model.CurrentsViewState
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
 import javax.inject.Inject
 

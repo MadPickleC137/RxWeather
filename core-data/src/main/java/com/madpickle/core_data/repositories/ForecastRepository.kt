@@ -1,5 +1,6 @@
 package com.madpickle.core_data.repositories
 
+import com.madpickle.core_android.repository.BaseRepository
 import com.madpickle.core_data.model.*
 import com.madpickle.core_data.realm_db.*
 import com.madpickle.core_network.IWeatherNetworkSource
@@ -17,9 +18,10 @@ interface IForecastRepository{
     fun getForecast(region: String, daysCount: Int): Observable<ForecastModel>
 }
 
-class ForecastRepository @Inject constructor(private val forecastDao: ForecastDao,
-                                             private val networkSource: IWeatherNetworkSource
-): IForecastRepository {
+class ForecastRepository @Inject constructor(
+    private val forecastDao: ForecastDao,
+    private val networkSource: IWeatherNetworkSource
+): BaseRepository(), IForecastRepository {
 
     /**
      * Получает актуальные данные из кэша и сети, данные полученные из сети записываются в кэш
