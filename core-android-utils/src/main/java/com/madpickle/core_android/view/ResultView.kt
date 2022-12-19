@@ -52,11 +52,11 @@ class ResultView @JvmOverloads constructor(
                 }
                 is PropertyView.SubTitleText -> {
                     binding.title.isVisible = true
-                    setTitle(propertyView.t)
+                    setText(propertyView.t)
                 }
                 is PropertyView.TitleText -> {
                     binding.text.isVisible = true
-                    setText(propertyView.t)
+                    setTitle(propertyView.t)
                 }
             }
         }

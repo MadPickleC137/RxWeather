@@ -1,5 +1,6 @@
 package com.madpickle.core_android
 
+import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -19,8 +20,12 @@ inline fun <reified T : ViewModel> Fragment.createViewModel() = viewModels<T>{
     (requireActivity().applicationContext as ViewModelFactoryProvider).getViewModelFactory()
 }
 
-fun <T> Fragment.observe(liveData: LiveData<T>, observer: (T?) -> Unit) {
-    liveData.observe(viewLifecycleOwner) { observer(it) }
+fun <T> Fragment.observe(liveData: LiveData<T>, observer: (T) -> Unit) {
+    liveData.observe(viewLifecycleOwner) {
+        if(it != null){
+            observer(it)
+        }
+    }
 }
 
 fun <T> Fragment.observeOnEvent(liveData: LiveData<Event<T>>, observer: (T) -> Unit) {
@@ -33,6 +38,14 @@ fun Fragment.navigateTo(screen: Screen){
 
 fun Fragment.onBack(){
     (activity as? NavigationListener)?.onBack()
+}
+
+fun Fragment.setAdjustResizeMode(){
+    this.activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+}
+
+fun Fragment.setAdjustPanMode(){
+    this.activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 }
 
 fun Fragment.showAlertDialog(event: AlertMessageEvent) = context?.run {

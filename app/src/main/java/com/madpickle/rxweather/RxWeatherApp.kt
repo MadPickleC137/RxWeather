@@ -7,6 +7,8 @@ import com.madpickle.feature_current_forecast.di.CurrentsComponentDependencies
 import com.madpickle.feature_current_forecast.di.FeatureCurrentComponentProvider
 import com.madpickle.feature_days_forecast.di.FeatureForecastComponentProvider
 import com.madpickle.feature_days_forecast.di.ForecastComponentDependencies
+import com.madpickle.feature_places.di.FeaturePlacesComponentProvider
+import com.madpickle.feature_places.di.PlacesComponentDependencies
 import com.madpickle.rxweather.di.AppComponent
 import com.madpickle.rxweather.di.DaggerAppComponent
 import io.realm.Realm
@@ -17,7 +19,8 @@ import timber.log.Timber
 /**
  * Created by David Madilyan on 27.08.2022.
  */
-class RxWeatherApp: Application(), ViewModelFactoryProvider, FeatureCurrentComponentProvider, FeatureForecastComponentProvider {
+class RxWeatherApp: Application(), ViewModelFactoryProvider, FeatureCurrentComponentProvider,
+    FeatureForecastComponentProvider, FeaturePlacesComponentProvider {
 
     private lateinit var appComponent: AppComponent
 
@@ -55,5 +58,9 @@ class RxWeatherApp: Application(), ViewModelFactoryProvider, FeatureCurrentCompo
 
     override fun getForecastComponentDependencies(): ForecastComponentDependencies {
         return appComponent
+    }
+
+    override fun getPlacesDependencies(): PlacesComponentDependencies {
+        return  appComponent
     }
 }

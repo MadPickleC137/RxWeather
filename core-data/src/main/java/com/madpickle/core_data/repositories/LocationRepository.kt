@@ -8,6 +8,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -31,11 +32,12 @@ class LocationRepository@Inject constructor(
      * Реализация  запроса в сеть для быстрого поиска места, необходимо для выборки прогнозов
      * */
     override fun searchLocations(regionName: String): Observable<List<LocationModel>> {
-        return networkSource.searchPlaces(regionName).observeOn(AndroidSchedulers.mainThread())
-            .throttleLast(500, TimeUnit.MILLISECONDS)
+        return networkSource.searchPlaces(regionName)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
             .map { list ->
-            list.map { LocationModel.InitLocation(it) }
-        }
+                list.map { LocationModel.InitLocation(it) }
+            }
     }
 
     /**

@@ -10,7 +10,6 @@ import coil.transform.CircleCropTransformation
 import com.madpickle.core_data.model.CurrentModel
 import com.madpickle.core_android.getDateString
 import com.madpickle.core_android.getTimeString
-import com.madpickle.feature_current_forecast.R
 import com.madpickle.feature_current_forecast.databinding.ItemCurrentBinding
 
 /**
@@ -65,7 +64,7 @@ class CurrentsAdapter: RecyclerView.Adapter<CurrentsAdapter.CurrentItemViewHolde
             data.text = current.lastUpdated.getDateString()
             icon.load(current.iconUrl) {
                 crossfade(true)
-                placeholder(R.drawable.ic_clear_weather)
+                placeholder(com.madpickle.core_android.R.drawable.ic_clear_weather)
                 transformations(CircleCropTransformation())
             }
             temp.text = current.temperature?.toString()

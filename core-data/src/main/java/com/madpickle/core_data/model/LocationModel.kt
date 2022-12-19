@@ -11,9 +11,8 @@ import java.util.*
  * Created by David Madilyan on 28.08.2022.
  */
 @RealmClass(embedded = true)
-open
-class LocationModel(
-    var idLocation: String = UUID.randomUUID().toString(),
+open class LocationModel(
+    var idLocation: String? = UUID.randomUUID().toString(),
     var name: String? = null,
     @Required
     var region: String = "",

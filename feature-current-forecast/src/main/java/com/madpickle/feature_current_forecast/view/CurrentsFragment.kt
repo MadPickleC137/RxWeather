@@ -12,7 +12,6 @@ import com.madpickle.core_android.navigateTo
 import com.madpickle.core_android.observe
 import com.madpickle.core_android.screens.Screen
 import com.madpickle.core_android.view.ResultView
-import com.madpickle.feature_current_forecast.R
 import com.madpickle.feature_current_forecast.databinding.FragmentCurrentsBinding
 import com.madpickle.feature_current_forecast.di.DaggerFeatureCurrentComponent
 import com.madpickle.feature_current_forecast.di.FeatureCurrentComponentProvider
@@ -74,9 +73,9 @@ class CurrentsFragment : BaseFragment<FragmentCurrentsBinding>() {
         binding.progressLayout.isVisible = false
         binding.resultBanner.isVisible = true
         binding.resultBanner.initResultView(
-            ResultView.PropertyView.TitleText(getString(R.string.currents_error_title)),
-            ResultView.PropertyView.Icon(R.drawable.ic_error),
-            ResultView.PropertyView.SubTitleText(getString(R.string.currents_error_text))
+            ResultView.PropertyView.TitleText(getString(com.madpickle.core_android.R.string.currents_error_title)),
+            ResultView.PropertyView.Icon(com.madpickle.core_android.R.drawable.ic_error),
+            ResultView.PropertyView.SubTitleText(getString(com.madpickle.core_android.R.string.currents_error_text))
         )
     }
 

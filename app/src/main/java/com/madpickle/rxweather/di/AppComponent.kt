@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.madpickle.core_data.repositories.AstronomyRepository
 import com.madpickle.core_data.repositories.CurrentWeatherRepository
 import com.madpickle.core_data.repositories.ForecastRepository
+import com.madpickle.core_data.repositories.LocationRepository
 import com.madpickle.feature_current_forecast.di.CurrentsComponentDependencies
 import com.madpickle.feature_days_forecast.di.ForecastComponentDependencies
+import com.madpickle.feature_places.di.PlacesComponentDependencies
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -22,7 +24,9 @@ import javax.inject.Singleton
         ViewModelModule::class
     ]
 )
-interface AppComponent: CurrentsComponentDependencies, ForecastComponentDependencies {
+interface AppComponent: CurrentsComponentDependencies, ForecastComponentDependencies, PlacesComponentDependencies {
+
+    override fun getLocationRepo(): LocationRepository
 
     override fun getCurrentRepo(): CurrentWeatherRepository
 

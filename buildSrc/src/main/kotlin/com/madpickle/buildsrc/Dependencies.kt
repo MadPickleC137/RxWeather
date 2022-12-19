@@ -57,6 +57,7 @@ object Libs{
         const val rxAndroid = "io.reactivex.rxjava3:rxandroid:$rxAndroidVersion"
         const val rxJava = "io.reactivex.rxjava3:rxjava:$rxJavaVersion"
         const val rxKotlin = "io.reactivex.rxjava3:rxkotlin:$rxKotlinVersion"
+        const val rxViews = "com.jakewharton.rxbinding4:rxbinding:4.0.0"
     }
 
     object Realm {
