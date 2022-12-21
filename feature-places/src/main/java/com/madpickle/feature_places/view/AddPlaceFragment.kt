@@ -47,6 +47,9 @@ class AddPlaceFragment: BaseFragment<FragmentAddPlacesBinding>() {
                 PlacesViewState.SelectSuccess -> setSuccessSelectPlace()
             }
         }
+        observe(viewModel.hideKeyboard){
+            context?.hideKeyboard(binding.searchText)
+        }
     }
 
     private fun setSuccessSelectPlace() {

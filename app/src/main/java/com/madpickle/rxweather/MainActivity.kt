@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(), NavigationListener {
     override fun navigateTo(screen: Screen) {
         when(screen){
             is Screen.CurrentsList -> {}
-            is Screen.ForecastDetail -> navController.navigate(R.id.action_currentsFragment_to_forecastFragment)
+            is Screen.ForecastDetail -> navController.navigate(R.id.action_currentsFragment_to_forecastFragment, screen.toBundle())
             is Screen.SelectRegion -> navController.navigate(R.id.action_currentsFragment_to_addPlaceFragment)
         }
         Timber.i("Экран: ${screen.title}")

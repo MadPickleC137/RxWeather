@@ -32,7 +32,7 @@
             android:paddingTop="16dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:paddingBottom="60dp"
+            android:paddingBottom="65dp"
             android:clipToPadding="false"
             tools:itemCount="4"
             tools:listitem="@layout/item_current"
@@ -49,11 +49,11 @@
             android:textSize="17sp"
             app:icon="@drawable/ic_add"
             app:iconTint="@color/white"
+            app:borderWidth="0dp"
+            app:fabSize="normal"
             android:textAllCaps="false"
             android:backgroundTint="@color/gray_600"
             android:textColor="@color/text_button_white"
-            app:borderWidth="0dp"
-            app:fabSize="normal"
             android:layout_gravity="bottom|end"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

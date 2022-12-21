@@ -26,7 +26,7 @@ import javax.inject.Inject
  *                                 - API
  */
 interface ICurrentWeatherRepository {
-    fun syncCurrent(region: String): Observable<CurrentModel>
+    fun getCurrentApi(region: String): Observable<CurrentModel>
     fun insertCurrentModel(currentModel: CurrentModel): Completable
     fun deleteCurrentModel(region: String): Completable
     fun getAllCurrents(): Observable<List<CurrentModel>>
@@ -42,7 +42,7 @@ internal class CurrentWeatherRepository @Inject constructor(
      * @param region сторока по которой получаем данные
      * @param error Слушатель на случай прихода с микросервиса ошибки
      * */
-    override fun syncCurrent(region: String): Observable<CurrentModel> {
+    override fun getCurrentApi(region: String): Observable<CurrentModel> {
         return networkSource.getCurrentWeather(region)
             .map {
                 it.current?.let {

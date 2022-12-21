@@ -30,5 +30,9 @@
     <fragment
         android:id="@+id/forecastFragment"
         android:name="com.madpickle.feature_days_forecast.view.ForecastFragment"
-        android:label="ForecastFragment" />
+        android:label="ForecastFragment" >
+        <argument
+            android:name="region"
+            app:argType="string" />
+    </fragment>
 </navigation>

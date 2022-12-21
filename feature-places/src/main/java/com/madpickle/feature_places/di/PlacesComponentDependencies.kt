@@ -1,5 +1,6 @@
 package com.madpickle.feature_places.di
 
+import com.madpickle.core_data.repositories.ICurrentWeatherRepository
 import com.madpickle.core_data.repositories.ILocationRepository
 
 /**
@@ -7,4 +8,5 @@ import com.madpickle.core_data.repositories.ILocationRepository
  */
 interface PlacesComponentDependencies {
     fun getLocationRepo(): ILocationRepository
+    fun getCurrentRepo(): ICurrentWeatherRepository
 }
