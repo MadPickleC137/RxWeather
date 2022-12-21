@@ -54,12 +54,15 @@ class CurrentsFragment : BaseFragment<FragmentCurrentsBinding>() {
     private fun initViews() {
         binding.currents.layoutManager = LinearLayoutManager(context)
         binding.currents.adapter = currentsAdapter
+        currentsAdapter.onItemUpdate = viewModel::updateCurrent
         binding.addLocation.setOnClickListener {
             navigateTo(Screen.SelectRegion())
         }
     }
 
     private fun setCurrentsListView(currents: List<CurrentModel>) {
+        binding.progressLayout.isVisible = false
+        binding.resultBanner.isVisible = false
         currentsAdapter.initItems(currents)
     }
 

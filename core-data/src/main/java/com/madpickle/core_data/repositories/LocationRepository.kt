@@ -9,7 +9,6 @@ import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 /**
@@ -18,12 +17,12 @@ import javax.inject.Inject
 
 interface ILocationRepository{
     fun searchLocations(regionName: String): Observable<List<LocationModel>>
-    fun getLocation(): Single<LocationModel>
+    fun getLocation(): Observable<LocationModel>
     fun setLocation(locationModel: LocationModel): Completable
     fun deleteLocation(): Completable
 }
 
-class LocationRepository@Inject constructor(
+internal class LocationRepository@Inject constructor(
     private val dao: LocationDao,
     private val networkSource: IWeatherNetworkSource
 ): BaseRepository(), ILocationRepository {
@@ -43,8 +42,8 @@ class LocationRepository@Inject constructor(
     /**
      * Получает из кэша модель локации, которую выбрал пользователь
      * */
-    override fun getLocation(): Single<LocationModel> {
-        return dao.getLocation()
+    override fun getLocation(): Observable<LocationModel> {
+        return dao.getLocation().toObservable()
     }
 
     /**

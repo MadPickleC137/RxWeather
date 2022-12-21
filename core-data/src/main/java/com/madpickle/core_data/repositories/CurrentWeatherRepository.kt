@@ -2,14 +2,13 @@ package com.madpickle.core_data.repositories
 
 import com.madpickle.core_android.repository.BaseRepository
 import com.madpickle.core_data.model.CurrentModel
-import com.madpickle.core_android.repository.RepositoryListener
 import com.madpickle.core_data.realm_db.CurrentWeatherDao
 import com.madpickle.core_network.IWeatherNetworkSource
 import com.madpickle.core_network.model.CurrentResponse
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Notification
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -27,13 +26,13 @@ import javax.inject.Inject
  *                                 - API
  */
 interface ICurrentWeatherRepository {
-    fun getCurrentObservable(region: String, error: com.madpickle.core_android.repository.RepositoryListener): Observable<CurrentModel>
+    fun syncCurrent(region: String): Observable<CurrentModel>
     fun insertCurrentModel(currentModel: CurrentModel): Completable
     fun deleteCurrentModel(region: String): Completable
     fun getAllCurrents(): Observable<List<CurrentModel>>
 }
 
-class CurrentWeatherRepository @Inject constructor(
+internal class CurrentWeatherRepository @Inject constructor(
     private val dao: CurrentWeatherDao,
     private val networkSource: IWeatherNetworkSource
 ): BaseRepository(), ICurrentWeatherRepository {
@@ -43,24 +42,15 @@ class CurrentWeatherRepository @Inject constructor(
      * @param region сторока по которой получаем данные
      * @param error Слушатель на случай прихода с микросервиса ошибки
      * */
-    override fun getCurrentObservable(region: String, error: com.madpickle.core_android.repository.RepositoryListener): Observable<CurrentModel> {
-        return Observable.concatArrayEager(
-            dao.getCurrentByRegion(region).toObservable(),
-            networkSource.getCurrentWeather(region)
-                .materialize()
-                .observeOn(AndroidSchedulers.mainThread())
-                .map {
-                    it.error?.let { error.onError() }
-                    it
-                }
-                .filter { !it.isOnError && it.value?.current != null }
-                .dematerialize {
-                    val model = CurrentModel.InitCurrent(it.value?.current!!, region)
-                    dao.insertOrUpdate(model)
-                    Notification.createOnNext(model)
-                }
-                .debounce(400, TimeUnit.MILLISECONDS)
-        )
+    override fun syncCurrent(region: String): Observable<CurrentModel> {
+        return networkSource.getCurrentWeather(region)
+            .map {
+                it.current?.let {
+                    current -> CurrentModel.InitCurrent(current, region)
+                } ?: CurrentModel()
+            }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
     }
 
     override fun insertCurrentModel(currentModel: CurrentModel): Completable {

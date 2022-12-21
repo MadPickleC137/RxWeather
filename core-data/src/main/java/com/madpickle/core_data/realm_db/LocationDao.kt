@@ -16,16 +16,17 @@ import io.realm.kotlin.where
  * [LocationModel]
  */
 class LocationDao {
-
     fun getLocation(): Single<LocationModel>{
-        return executeSingle {
-            it.where<LocationWrapper>().findFirst()?.locationModel ?: LocationModel()
+        return executeSingle { realm ->
+            realm.where(LocationModel::class.java)
+                .isNotNull("region")
+                .findFirst()?.copy() ?: LocationModel()
         }
     }
 
     fun insertOrUpdate(model: LocationModel): Completable {
         return executeCompletable {
-            it.insertOrUpdate(LocationWrapper(locationModel = model))
+            it.insertOrUpdate(LocationWrapper(model))
         }
     }
 

@@ -29,6 +29,10 @@ open class HourModel(
     var code: Int = 0,
 ): RealmObject() {
 
+    fun copy(): HourModel{
+        return HourModel(idHour, idParentDay, time, minTemp, isDay, isRain, isShow, chanceRain, chanceSnow, humidity, cloud, feelsLike, uv, text, iconUrl, code)
+    }
+
     companion object{
         fun InitHourForecastModel(forecast: HourForecast, idDay: Long?): HourModel{
             return HourModel(

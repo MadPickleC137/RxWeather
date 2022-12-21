@@ -24,6 +24,13 @@ open class AlertModel(
     var event: String? = null,                                                                             //тип придупреждения
     var desc: String? = null,
 ) : RealmObject() {
+
+    fun copy(): AlertModel{
+        return AlertModel(
+            id, headline, areas, region, note, effective, expires, instruction, category, event, desc
+        )
+    }
+
     companion object{
         fun InitAlertModel(alert: Alert, regionCurrent: String?): AlertModel{
             return AlertModel(

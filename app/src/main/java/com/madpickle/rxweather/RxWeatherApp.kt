@@ -44,6 +44,7 @@ class RxWeatherApp: Application(), ViewModelFactoryProvider, FeatureCurrentCompo
             .deleteRealmIfMigrationNeeded()
             .allowQueriesOnUiThread(false)
             .allowWritesOnUiThread(false)
+            .compactOnLaunch()
             .build()
         Realm.setDefaultConfiguration(config)
     }

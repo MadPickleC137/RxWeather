@@ -3,10 +3,7 @@ package com.madpickle.rxweather.di
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
-import com.madpickle.core_data.repositories.AstronomyRepository
-import com.madpickle.core_data.repositories.CurrentWeatherRepository
-import com.madpickle.core_data.repositories.ForecastRepository
-import com.madpickle.core_data.repositories.LocationRepository
+import com.madpickle.core_data.repositories.*
 import com.madpickle.feature_current_forecast.di.CurrentsComponentDependencies
 import com.madpickle.feature_days_forecast.di.ForecastComponentDependencies
 import com.madpickle.feature_places.di.PlacesComponentDependencies
@@ -26,13 +23,13 @@ import javax.inject.Singleton
 )
 interface AppComponent: CurrentsComponentDependencies, ForecastComponentDependencies, PlacesComponentDependencies {
 
-    override fun getLocationRepo(): LocationRepository
+    override fun getLocationRepo(): ILocationRepository
 
-    override fun getCurrentRepo(): CurrentWeatherRepository
+    override fun getCurrentRepo(): ICurrentWeatherRepository
 
-    override fun getForecastRepo(): ForecastRepository
+    override fun getForecastRepo(): IForecastRepository
 
-    override fun getAstronomyRepo(): AstronomyRepository
+    override fun getAstronomyRepo(): IAstronomyRepository
 
     fun getViewModelFactory(): ViewModelProvider.Factory
 

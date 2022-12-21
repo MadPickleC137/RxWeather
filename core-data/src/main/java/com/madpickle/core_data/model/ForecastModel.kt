@@ -22,11 +22,17 @@ open class ForecastModel(
     var daysForecast: RealmList<DayModel>? = null,
     var alerts: RealmList<AlertModel>? = null
 ): RealmObject() {
+
+    fun copy(): ForecastModel{
+        return ForecastModel(id, region, current, location, daysForecast, alerts)
+    }
+
+
     companion object{
         fun InitForecastWithDays(response: ForecastResponse): ForecastModel {
             val regionRes = response.location?.region ?: ""
             val realmAlerts = RealmList<AlertModel>()
-            val realmDays= RealmList<DayModel>()
+            val realmDays = RealmList<DayModel>()
             response.alerts?.alert?.forEach {
                 realmAlerts.add(AlertModel.InitAlertModel(it, regionRes))
             }

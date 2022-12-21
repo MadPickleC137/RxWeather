@@ -20,7 +20,7 @@ interface IAstronomyRepository {
     fun deleteByRegion(region: String): Completable
 }
 
-class AstronomyRepository @Inject constructor(
+internal class AstronomyRepository @Inject constructor(
     private val astronomyDao: AstronomyDao,
     private val networkSource: IWeatherNetworkSource
 ): BaseRepository(), IAstronomyRepository {

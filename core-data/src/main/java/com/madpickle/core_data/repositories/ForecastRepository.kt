@@ -18,7 +18,7 @@ interface IForecastRepository{
     fun getForecast(region: String, daysCount: Int): Observable<ForecastModel>
 }
 
-class ForecastRepository @Inject constructor(
+internal class ForecastRepository @Inject constructor(
     private val forecastDao: ForecastDao,
     private val networkSource: IWeatherNetworkSource
 ): BaseRepository(), IForecastRepository {

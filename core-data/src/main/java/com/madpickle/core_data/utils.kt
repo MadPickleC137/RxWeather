@@ -17,13 +17,24 @@ import java.lang.IllegalArgumentException
 internal inline fun <T> executeSingle(crossinline transactionResult: (Realm) -> T?): Single<T> {
     return Single.create { emitter ->
         Realm.getDefaultInstance().use { realm ->
-            realm.executeTransaction {
-                val result = transactionResult.invoke(realm)
-                if (result != null) {
-                    emitter.onSuccess(result)
-                } else {
-                    emitter.onError(Throwable("Realm result is null object"))
+            try{
+                realm.executeTransaction {
+                    val result = transactionResult.invoke(realm)
+                    if (result != null) {
+                        emitter.onSuccess(result)
+                    } else {
+                        emitter.onError(Throwable("Realm result is null object"))
+                    }
                 }
+            }catch (e: IllegalArgumentException){
+                Timber.e(e)
+                emitter.onError(e)
+            }catch (e: RealmMigrationNeededException){
+                Timber.e(e)
+                emitter.onError(e)
+            }catch (e: RealmException){
+                Timber.e(e)
+                emitter.onError(e)
             }
         }
     }.subscribeOn(Schedulers.io())

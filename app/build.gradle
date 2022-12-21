@@ -4,8 +4,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-    id 'realm-android'
 }
+apply plugin: "realm-android"
 
 android {
     compileSdk 32

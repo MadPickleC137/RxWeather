@@ -6,8 +6,8 @@
     app:cardCornerRadius="12dp"
     android:elevation="0dp"
     app:cardElevation="0dp"
+    app:cardBackgroundColor="@android:color/transparent"
     app:strokeWidth="0dp"
-    android:layout_marginTop="16dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -45,7 +45,7 @@
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@id/icon_current"
             app:layout_constraintTop_toBottomOf="@id/date_current"
-            tools:text="18º C" />
+            tools:text="18 ºC" />
 
         <TextView
             android:id="@+id/region_current"

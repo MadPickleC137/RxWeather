@@ -24,6 +24,12 @@ open class AstronomyModel(
 ): RealmObject() {
     val textMoonPhase get() = moonPhase?.replace(" ", "")?.let { MoonPhase.valueOf(it) } ?: MoonPhase.Empty
 
+    fun copy(): AstronomyModel{
+        return AstronomyModel(
+            idAstronomy, date, sunrise, sunset, moonrise, moonset, moonPhase, region, moonIlluminate
+        )
+    }
+
     companion object{
         fun InitAstronomyModel(astro: Astro?, date: String?, region: String): AstronomyModel {
             return AstronomyModel(

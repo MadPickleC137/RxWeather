@@ -4,7 +4,6 @@ import com.madpickle.core_network.model.Current
 import io.realm.RealmObject
 import io.realm.annotations.RealmClass
 import io.realm.annotations.Required
-import java.util.*
 
 /**
  * Created by David Madilyan on 27.08.2022.
@@ -13,8 +12,8 @@ import java.util.*
  */
 @RealmClass(embedded = true)
 open class CurrentModel(
-    var id: String = UUID.randomUUID().toString(),
     var lastUpdated: String? = null,
+    var lastUpdatedEpoch: Long? = null,
     @Required
     var region: String = "",
     var temperature: Double? = null,
@@ -38,17 +37,35 @@ open class CurrentModel(
     var pm10: Float? = null,
 ): RealmObject() {
 
-    fun getIconRes(): Int{
-       return when(text){
-
-            else -> 0
-        }
+    fun copy(): CurrentModel{
+        return CurrentModel(
+            lastUpdated,
+            lastUpdatedEpoch,
+            region,
+            temperature,
+            isDay,
+            cloud,
+            humidity,
+            feelsLike,
+            windKmp,
+            uv,
+            text,
+            iconUrl,
+            code,
+            co,
+            o3,
+            no2,
+            so2,
+            pm25,
+            pm10,
+        )
     }
 
     companion object{
         fun InitCurrent(currentResponse: Current, region: String?): CurrentModel {
             return CurrentModel(
                 lastUpdated = currentResponse.lastUpdated,
+                lastUpdatedEpoch = currentResponse.lastUpdatedEpoch,
                 temperature = currentResponse.temperature,
                 isDay = currentResponse.isDay == 1,
                 region = region ?: "",

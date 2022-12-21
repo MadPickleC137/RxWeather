@@ -29,6 +29,10 @@ open class DayModel(
     var hours: RealmList<HourModel>? = null
 ) : RealmObject() {
 
+    fun copy(): DayModel{
+        return DayModel(idDayKey, idDay, region, maxTemp, dateForecast, minTemp, avgTemp, uv, text, iconUrl, code, astro, hours)
+    }
+
     companion object{
         fun InitDayForecast(dayForecast: Forecast?, region: String): DayModel {
             val idDay = dayForecast?.dateEpoch ?: Random.nextLong(0, Long.MAX_VALUE)
