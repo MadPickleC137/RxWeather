@@ -18,8 +18,8 @@ interface IWeatherService {
     @GET("forecast.json")
     fun getForecastByDays(
         @Query("q") location: String,
-        @Query("days") days: Int,
-        @Query("aqi") aqi: String = "no",
+        @Query("days") days: Int = 7,
+        @Query("aqi") aqi: String = "yes",
         @Query("alerts") alerts: String = "yes",
     ): Observable<ForecastResponse>
 

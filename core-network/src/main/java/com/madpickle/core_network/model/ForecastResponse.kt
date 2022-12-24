@@ -31,7 +31,7 @@ data class Forecast(
 data class HourForecast(
     @SerializedName("time_epoch") val timeEpoch: Long?,
     val time: String?,
-    @SerializedName("temp_c") val minTemp: Float?,
+    @SerializedName("temp_c") val temp: Float?,
     @SerializedName("is_day") val isDay: Int?,
     @SerializedName("will_it_rain") val willRain: Int?,                                             //1 = Yes 0 = No Будет ли дождь
     @SerializedName("will_it_snow") val willSnow: Int?,                                             //1 = Yes 0 = No Будет ли снег
@@ -42,13 +42,11 @@ data class HourForecast(
     val cloud: Int?,
     @SerializedName("feelslike_c") val feelsLike: Float?,                                           //температура по ощущениям
     @SerializedName("uv") val uv: Double?,
+    @SerializedName("wind_kph") val windKph: Double?,
 )
 
 data class DayForecast(
-    @SerializedName("maxtemp_c") val maxTemp: Float?,
-    @SerializedName("mintemp_c") val minTemp: Float?,
     @SerializedName("avgtemp_c") val avgTemp: Float?,
-    @SerializedName("uv") val uv: Double?,
     val condition: Condition?,
 )
 

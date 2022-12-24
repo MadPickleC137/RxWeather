@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -17,7 +18,198 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:navigationIcon="@drawable/ic_back"
-            app:title="" />
-
+            app:title="@string/forecast_title" />
     </com.google.android.material.appbar.AppBarLayout>
+
+
+    <LinearLayout
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="8dp"
+        android:background="@color/toolbar_background"
+        app:layout_constraintTop_toBottomOf="@id/appbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <TextView
+            android:id="@+id/region_title"
+            tools:text="Sochi, Russia, 2022-12-24 15:30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/BaseTextStyle.Title2"/>
+        <ImageView
+            android:id="@+id/icon_current"
+            android:layout_width="56dp"
+            android:layout_marginTop="6dp"
+            android:contentDescription="@null"
+            app:srcCompat="@drawable/ic_clear_weather"
+            android:layout_height="56dp"/>
+
+        <TextView
+            android:id="@+id/current_temp"
+            tools:text="18 C"
+            android:layout_marginTop="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/BaseTextStyle.Title1"/>
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/update_btn"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_margin="12dp"
+        android:contentDescription="@null"
+        android:background="@drawable/ic_update"
+        app:layout_constraintBottom_toBottomOf="@+id/title_layout"
+        app:layout_constraintEnd_toEndOf="@id/title_layout" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/days_tab_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_layout">
+        <LinearLayout
+            android:id="@+id/content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="8dp"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/hours_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                android:orientation="horizontal"
+                android:scrollbars="none"
+                tools:listitem="@layout/item_hour"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/alerts_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:overScrollMode="never"
+                android:clipToPadding="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:scrollbars="none"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_alert"/>
+
+            <LinearLayout
+                android:id="@+id/forecast_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_forecast_detail"
+                android:padding="8dp">
+                <TextView
+                    android:id="@+id/is_day"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:paddingVertical="6dp"
+                    style="@style/BaseTextStyle.Normal"
+                    tools:text="День, по ощущениям 16 С"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.7dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="#B06C5959"/>
+                <TextView
+                    android:id="@+id/cloud"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Облачность 70%"
+                    style="@style/ItemInfoTextViewStyle"
+                    app:drawableStartCompat="@drawable/cloud_d" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.7dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="@color/divider_background"/>
+                <TextView
+                    android:id="@+id/humidity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Влажность 70%"
+                    style="@style/ItemInfoTextViewStyle"
+                    app:drawableStartCompat="@drawable/humidity_d" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.7dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="@color/divider_background"/>
+                <TextView
+                    android:id="@+id/wind"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Ветер 15 м/с"
+                    style="@style/ItemInfoTextViewStyle"
+                    app:drawableStartCompat="@drawable/wind_d" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.7dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="@color/divider_background"/>
+                <TextView
+                    android:id="@+id/uv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Индекс УФ: Низкий"
+                    style="@style/ItemInfoTextViewStyle"
+                    app:drawableStartCompat="@drawable/uf_d" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.7dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="@color/divider_background"/>
+
+                <TextView
+                    android:id="@+id/chance_snow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Снег 70%"
+                    style="@style/ItemInfoTextViewStyle"
+                    app:drawableStartCompat="@drawable/snow_d" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.7dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="@color/divider_background"/>
+
+                <TextView
+                    android:id="@+id/chance_rain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Дождь 70%"
+                    style="@style/ItemInfoTextViewStyle"
+                    app:drawableStartCompat="@drawable/rain_d" />
+            </LinearLayout>
+
+            <include layout="@layout/astronomy_info"/>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/days_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="8dp"
+        android:clipToPadding="false"
+        android:scrollbars="none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

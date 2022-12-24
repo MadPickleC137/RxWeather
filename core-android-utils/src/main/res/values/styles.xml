@@ -2,6 +2,7 @@
 <resources>
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/toolbar_title_text</item>
     </style>
     <style name="BaseTextStyle">
         <item name="android:textColor">@color/white</item>
@@ -11,18 +12,36 @@
 
     <style name="BaseTextStyle.Title1">
         <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_title_1</item>
+    </style>
+
+    <style name="BaseTextStyle.Title2">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_title_2</item>
+    </style>
+
+    <style name="BaseTextStyle.Normal">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_normal</item>
+    </style>
+
+    <style name="BaseTextStyle.Secondary">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#C6BEBE</item>
+        <item name="fontFamily">sans-serif</item>
     </style>
 
     <style name="BaseAppbarLayoutStyle" parent="Widget.MaterialComponents.AppBarLayout.Surface">
         <item name="expanded">true</item>
-        <item name="elevation">1dp</item>
+        <item name="elevation">0dp</item>
     </style>
 
     <style name="BaseToolbarStyle" parent="Widget.MaterialComponents.Toolbar">
         <item name="android:background">@color/toolbar_background</item>
-        <item name="android:elevation">1dp</item>
+        <item name="android:elevation">0dp</item>
         <item name="layout_collapseMode">none</item>
         <item name="titleCentered">true</item>
+        <item name="titleTextColor">@color/toolbar_title_text</item>
         <item name="titleTextAppearance">@style/Toolbar.TitleText</item>
     </style>
 
@@ -36,4 +55,23 @@
         <item name="contentPaddingStart">12dp</item>
     </style>
 
+    <style name="BaseTabLayoutStyle" parent="Widget.Design.TabLayout">
+        <item name="tabGravity">fill</item>
+        <item name="android:background">@color/tab_layout_background</item>
+        <item name="tabIndicator">@drawable/tab_item_background</item>
+        <item name="tabIndicatorColor">@color/white</item>
+        <item name="tabMode">scrollable</item>
+        <item name="tabIndicatorGravity">center</item>
+        <item name="tabRippleColor">@android:color/transparent</item>
+        <item name="tabUnboundedRipple">true</item>
+        <item name="tabTextColor">@color/tab_layout_text</item>
+    </style>
+
+    <style name="ItemInfoTextViewStyle">
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">12dp</item>
+        <item name="android:textAppearance">@style/BaseTextStyle.Normal</item>
+    </style>
 </resources>

@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.request.CachePolicy
 import coil.transform.CircleCropTransformation
-import com.madpickle.core_android.getDateString
-import com.madpickle.core_android.getTimeString
+import com.madpickle.core_android.utils.getDateString
+import com.madpickle.core_android.utils.getTimeString
+import com.madpickle.core_android.utils.toUrlIcon
 import com.madpickle.core_data.model.CurrentModel
 import com.madpickle.feature_current_forecast.R
 import com.madpickle.feature_current_forecast.databinding.ItemCurrentBinding
@@ -71,7 +72,7 @@ class CurrentsAdapter(
 
         fun bind(current: CurrentModel, index: Int){
             data.text = current.lastUpdated.getDateString()
-            icon.load("https:" + current.iconUrl) {
+            icon.load(current.iconUrl.toUrlIcon()) {
                 diskCachePolicy(CachePolicy.ENABLED)
                 networkCachePolicy(CachePolicy.ENABLED)
                 placeholder(com.madpickle.core_android.R.drawable.ic_clear_weather)

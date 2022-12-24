@@ -17,11 +17,8 @@ open class DayModel(
     var idDay: Long = 0,                                                                                //ключ по поиску зависимых объектов в  других таблицах
     @Required
     var region: String = "",                                                                             //регион по которому будут кэшироваться прогноз по дням
-    var maxTemp: Float? = null,
     var dateForecast: String? = null,
-    var minTemp: Float? = null,
     var avgTemp: Float? = null,
-    var uv: Double? = null,
     var text: String = "",
     var iconUrl: String = "",
     var code: Int = 0,
@@ -30,7 +27,7 @@ open class DayModel(
 ) : RealmObject() {
 
     fun copy(): DayModel{
-        return DayModel(idDayKey, idDay, region, maxTemp, dateForecast, minTemp, avgTemp, uv, text, iconUrl, code, astro, hours)
+        return DayModel(idDayKey, idDay, region, dateForecast, avgTemp, text, iconUrl, code, astro, hours)
     }
 
     companion object{
@@ -44,10 +41,7 @@ open class DayModel(
                 idDay = idDay,
                 region = region,
                 dateForecast = dayForecast?.date,
-                maxTemp = dayForecast?.day?.maxTemp,
-                minTemp = dayForecast?.day?.minTemp,
                 avgTemp = dayForecast?.day?.avgTemp,
-                uv = dayForecast?.day?.uv,
                 text = dayForecast?.day?.condition?.text ?: "",
                 iconUrl = dayForecast?.day?.condition?.iconUrl ?: "",
                 code = dayForecast?.day?.condition?.code ?: -1,

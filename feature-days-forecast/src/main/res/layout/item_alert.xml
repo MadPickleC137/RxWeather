@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="8dp"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/bg_alert_item"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Лавины"
+        android:gravity="center"
+        android:drawablePadding="24dp"
+        style="@style/BaseTextStyle.Title1" />
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="В горах выше 1500 м н.у.м. слабая лавинная опасность"
+        style="@style/ItemInfoTextViewStyle"
+        app:drawableStartCompat="@drawable/ic_alert"
+        android:textAppearance="@style/BaseTextStyle.Secondary"/>
+
+    <TextView
+        android:id="@+id/time_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="С: 2022-12-24 15:00:00"
+        android:layout_marginStart="24dp"
+        android:gravity="right"
+        android:textAppearance="@style/BaseTextStyle.Secondary"/>
+
+    <TextView
+        android:id="@+id/time_end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="До: 2022-12-24 01:00:00"
+        android:layout_marginStart="24dp"
+        android:gravity="right"
+        android:textAppearance="@style/BaseTextStyle.Secondary"/>
+</LinearLayout>

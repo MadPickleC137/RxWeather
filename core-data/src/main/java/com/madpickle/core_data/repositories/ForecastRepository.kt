@@ -16,7 +16,7 @@ import javax.inject.Inject
  */
 interface IForecastRepository{
     fun deleteForecast(region: String): Completable
-    fun getForecast(region: String, daysCount: Int): Observable<ForecastModel>
+    fun getForecast(region: String, daysCount: Int = 7): Observable<ForecastModel>
     fun insertForecast(model: ForecastModel): Completable
 }
 

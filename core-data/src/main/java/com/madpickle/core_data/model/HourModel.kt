@@ -14,7 +14,7 @@ open class HourModel(
     var idHour: String = UUID.randomUUID().toString(),
     var idParentDay: Long = 0,                                                                          //ключ по поиску элементов в таблице
     var time: String? = null,
-    var minTemp: Float? = null,
+    var temperature: Float? = null,
     var isDay: Boolean? = null,
     var isRain: Boolean? = null,
     var isShow: Boolean? = null,
@@ -23,6 +23,7 @@ open class HourModel(
     var humidity: Int? = null,                                                                             //влажность
     var cloud: Int? = null,
     var feelsLike: Float? = null,                                                                          //температура по ощущениям
+    var windKmp: Double? = 0.0,
     var uv: Double? = null,
     var text: String = "",
     var iconUrl: String = "",
@@ -30,7 +31,7 @@ open class HourModel(
 ): RealmObject() {
 
     fun copy(): HourModel{
-        return HourModel(idHour, idParentDay, time, minTemp, isDay, isRain, isShow, chanceRain, chanceSnow, humidity, cloud, feelsLike, uv, text, iconUrl, code)
+        return HourModel(idHour, idParentDay, time, temperature, isDay, isRain, isShow, chanceRain, chanceSnow, humidity, cloud, feelsLike, windKmp, uv, text, iconUrl, code)
     }
 
     companion object{
@@ -38,7 +39,7 @@ open class HourModel(
             return HourModel(
                 idParentDay = idDay ?: Random.nextLong(0, Long.MAX_VALUE),
                 time = forecast.time,
-                minTemp = forecast.minTemp,
+                temperature = forecast.temp,
                 isDay = forecast.isDay == 1,
                 isRain = forecast.willRain == 1,
                 isShow = forecast.willSnow == 1,
@@ -47,6 +48,7 @@ open class HourModel(
                 humidity = forecast.humidity,
                 cloud = forecast.cloud,
                 feelsLike = forecast.feelsLike,
+                windKmp = forecast.windKph,
                 uv = forecast.uv,
                 text = forecast.condition?.text ?: "",
                 iconUrl = forecast.condition?.iconUrl ?: "",

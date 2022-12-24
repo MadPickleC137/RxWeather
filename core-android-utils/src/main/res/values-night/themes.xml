@@ -4,5 +4,6 @@
         <item name="appBarLayoutStyle">@style/BaseAppbarLayoutStyle</item>
         <item name="toolbarStyle">@style/BaseToolbarStyle</item>
         <item name="materialCardViewStyle">@style/BaseCardViewStyle</item>
+        <item name="tabStyle">@style/BaseTabLayoutStyle</item>
     </style>
 </resources>
