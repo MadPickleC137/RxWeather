@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.madpickle.core_android.viewmodel.BaseViewModel
 import com.madpickle.core_data.model.CurrentModel
 import com.madpickle.core_data.repositories.ICurrentWeatherRepository
-import com.madpickle.feature_current_forecast.model.CurrentsViewState
+import com.madpickle.feature_current_forecast.state.CurrentsViewState
 import io.reactivex.rxjava3.kotlin.addTo
 import timber.log.Timber
 import javax.inject.Inject

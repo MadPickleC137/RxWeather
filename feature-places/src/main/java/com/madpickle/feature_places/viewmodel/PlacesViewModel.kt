@@ -6,7 +6,7 @@ import com.madpickle.core_android.viewmodel.BaseViewModel
 import com.madpickle.core_data.model.LocationModel
 import com.madpickle.core_data.repositories.ICurrentWeatherRepository
 import com.madpickle.core_data.repositories.ILocationRepository
-import com.madpickle.feature_places.model.PlacesViewState
+import com.madpickle.feature_places.state.PlacesViewState
 import io.reactivex.rxjava3.kotlin.addTo
 import timber.log.Timber
 import javax.inject.Inject

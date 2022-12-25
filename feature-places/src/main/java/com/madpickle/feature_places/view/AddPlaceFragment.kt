@@ -13,7 +13,7 @@ import com.madpickle.core_data.model.LocationModel
 import com.madpickle.feature_places.databinding.FragmentAddPlacesBinding
 import com.madpickle.feature_places.di.DaggerFeaturePlacesComponent
 import com.madpickle.feature_places.di.FeaturePlacesComponentProvider
-import com.madpickle.feature_places.model.PlacesViewState
+import com.madpickle.feature_places.state.PlacesViewState
 import com.madpickle.feature_places.viewmodel.PlacesViewModel
 import java.util.concurrent.TimeUnit
 

@@ -18,7 +18,7 @@ import com.madpickle.core_data.model.CurrentModel
 import com.madpickle.feature_current_forecast.databinding.FragmentCurrentsBinding
 import com.madpickle.feature_current_forecast.di.DaggerFeatureCurrentComponent
 import com.madpickle.feature_current_forecast.di.FeatureCurrentComponentProvider
-import com.madpickle.feature_current_forecast.model.CurrentsViewState
+import com.madpickle.feature_current_forecast.state.CurrentsViewState
 import com.madpickle.feature_current_forecast.viewmodel.CurrentsViewModel
 import timber.log.Timber
 

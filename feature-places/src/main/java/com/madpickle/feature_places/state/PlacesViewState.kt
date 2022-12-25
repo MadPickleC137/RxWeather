@@ -1,4 +1,4 @@
-package com.madpickle.feature_places.model
+package com.madpickle.feature_places.state
 
 import com.madpickle.core_data.model.LocationModel
 

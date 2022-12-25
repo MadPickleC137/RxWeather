@@ -1,4 +1,4 @@
-package com.madpickle.feature_current_forecast.model
+package com.madpickle.feature_current_forecast.state
 
 import com.madpickle.core_data.model.CurrentModel
 

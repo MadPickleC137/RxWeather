@@ -110,91 +110,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:animateLayoutChanges="true"
                 android:background="@drawable/bg_forecast_detail"
                 android:padding="8dp">
-                <TextView
+                <com.madpickle.core_android.view.ItemInfoView
                     android:id="@+id/is_day"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:paddingVertical="6dp"
-                    style="@style/BaseTextStyle.Normal"
-                    tools:text="День, по ощущениям 16 С"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.7dp"
-                    android:layout_marginVertical="8dp"
-                    android:background="#B06C5959"/>
-                <TextView
+                    android:layout_height="wrap_content" />
+                <com.madpickle.core_android.view.ItemInfoView
                     android:id="@+id/cloud"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="Облачность 70%"
-                    style="@style/ItemInfoTextViewStyle"
-                    app:drawableStartCompat="@drawable/cloud_d" />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.7dp"
-                    android:layout_marginVertical="8dp"
-                    android:background="@color/divider_background"/>
-                <TextView
+                    android:layout_height="wrap_content" />
+                <com.madpickle.core_android.view.ItemInfoView
                     android:id="@+id/humidity"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="Влажность 70%"
-                    style="@style/ItemInfoTextViewStyle"
-                    app:drawableStartCompat="@drawable/humidity_d" />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.7dp"
-                    android:layout_marginVertical="8dp"
-                    android:background="@color/divider_background"/>
-                <TextView
+                    android:layout_height="wrap_content" />
+                <com.madpickle.core_android.view.ItemInfoView
                     android:id="@+id/wind"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="Ветер 15 м/с"
-                    style="@style/ItemInfoTextViewStyle"
-                    app:drawableStartCompat="@drawable/wind_d" />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.7dp"
-                    android:layout_marginVertical="8dp"
-                    android:background="@color/divider_background"/>
-                <TextView
+                    android:layout_height="wrap_content" />
+                <com.madpickle.core_android.view.ItemInfoView
                     android:id="@+id/uv"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="Индекс УФ: Низкий"
-                    style="@style/ItemInfoTextViewStyle"
-                    app:drawableStartCompat="@drawable/uf_d" />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.7dp"
-                    android:layout_marginVertical="8dp"
-                    android:background="@color/divider_background"/>
-
-                <TextView
+                    android:layout_height="wrap_content" />
+                <com.madpickle.core_android.view.ItemInfoView
                     android:id="@+id/chance_snow"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="Снег 70%"
-                    style="@style/ItemInfoTextViewStyle"
-                    app:drawableStartCompat="@drawable/snow_d" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.7dp"
-                    android:layout_marginVertical="8dp"
-                    android:background="@color/divider_background"/>
-
-                <TextView
+                    android:layout_height="wrap_content" />
+                <com.madpickle.core_android.view.ItemInfoView
                     android:id="@+id/chance_rain"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="Дождь 70%"
-                    style="@style/ItemInfoTextViewStyle"
-                    app:drawableStartCompat="@drawable/rain_d" />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <include layout="@layout/astronomy_info"/>
