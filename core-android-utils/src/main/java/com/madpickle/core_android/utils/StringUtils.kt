@@ -21,10 +21,21 @@ fun String?.toUrlIcon(): String{
 }
 
 fun String?.parseAlertDate(start: String): String{
-    return (start + " " + this?.replace("T", "  ")?.replaceAfter("+", ""))
+    return ("$start " + this?.replace("T", "  ")
+        ?.replaceAfter("+", ""))
+        .replace("+", "")
 }
 
 fun String?.getDayOfWeek(): String {
     val localDate = LocalDate.parse(this)
-    return localDate.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault())
+    return localDate.dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.getDefault())
+}
+
+fun getPluralsDays(count: Int): String {
+    return when (count) {
+        1 -> "1 день"
+        in 2..4 -> "$count  дня"
+        in 5..10 -> "$count дней"
+        else -> ""
+    }
 }

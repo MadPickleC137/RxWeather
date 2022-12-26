@@ -1,11 +1,11 @@
 package com.madpickle.core_data.realm_db
 
 import com.madpickle.core_data.executeCompletable
-import com.madpickle.core_data.executeSingle
+import com.madpickle.core_data.executeRealm
 import com.madpickle.core_data.model.CurrentModel
 import com.madpickle.core_data.model.CurrentWrapper
 import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.core.Maybe
 import io.realm.kotlin.where
 
 /**
@@ -16,15 +16,15 @@ import io.realm.kotlin.where
  */
 
 class CurrentWeatherDao {
-    fun getCurrentByRegion(region: String): Single<CurrentModel>{
-        return executeSingle {
+    fun getCurrentByRegion(region: String): Maybe<CurrentModel>{
+        return executeRealm {
             it.where<CurrentModel>().equalTo("region", region)
                 .findFirst()?.copy() ?: CurrentModel()
         }
     }
 
-    fun getAllCurrents(): Single<List<CurrentModel>> {
-        return executeSingle { realm ->
+    fun getAllCurrents(): Maybe<List<CurrentModel>> {
+        return executeRealm { realm ->
             realm.where(CurrentModel::class.java).findAll().map { it?.copy() ?: CurrentModel() }
         }
     }

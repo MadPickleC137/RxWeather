@@ -1,11 +1,11 @@
 package com.madpickle.core_data.realm_db
 
 import com.madpickle.core_data.executeCompletable
-import com.madpickle.core_data.executeSingle
+import com.madpickle.core_data.executeRealm
 import com.madpickle.core_data.model.LocationModel
 import com.madpickle.core_data.model.LocationWrapper
 import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.core.Maybe
 import io.realm.kotlin.where
 
 /**
@@ -16,8 +16,8 @@ import io.realm.kotlin.where
  * [LocationModel]
  */
 class LocationDao {
-    fun getLocation(): Single<LocationModel>{
-        return executeSingle { realm ->
+    fun getLocation(): Maybe<LocationModel> {
+        return executeRealm { realm ->
             realm.where(LocationModel::class.java)
                 .isNotNull("region")
                 .findFirst()?.copy() ?: LocationModel()

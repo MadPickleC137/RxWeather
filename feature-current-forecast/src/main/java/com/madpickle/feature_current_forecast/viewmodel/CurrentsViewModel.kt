@@ -1,5 +1,6 @@
 package com.madpickle.feature_current_forecast.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.madpickle.core_android.viewmodel.BaseViewModel
 import com.madpickle.core_data.model.CurrentModel
@@ -14,7 +15,7 @@ import javax.inject.Inject
  */
 class CurrentsViewModel @Inject constructor(private val currentRepo: ICurrentWeatherRepository): BaseViewModel() {
     private val _state = MutableLiveData<CurrentsViewState>()
-    val state = _state
+    val state: LiveData<CurrentsViewState> = _state
 
     fun updateCurrent(currentModel: CurrentModel, index: Int){
         currentRepo.getCurrentApi(currentModel.region)

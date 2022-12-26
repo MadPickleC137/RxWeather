@@ -27,5 +27,10 @@
     <string name="places_init_banner_title">Поиск мест для прогноза</string>
     <string name="places_init_banner_text">Введите название региона, который хотите найти</string>
     <string name="forecast_title">Прогноз на неделю</string>
+    <string name="forecast_error_title">Какие-то неполадки :(</string>
+    <string name="forecast_error_message">Повторите попытку чуть позже</string>
+    <string name="forecast_day">День</string>
+    <string name="forecast_night">Ночь</string>
+    <string name="forecast_feelslike">, Ощущается как %s</string>
 
 </resources>

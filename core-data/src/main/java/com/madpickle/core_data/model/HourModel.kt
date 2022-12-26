@@ -30,6 +30,8 @@ open class HourModel(
     var code: Int = 0,
 ): RealmObject() {
 
+    fun getTextUv() = getUvIndex(uv).text
+
     fun copy(): HourModel{
         return HourModel(idHour, idParentDay, time, temperature, isDay, isRain, isShow, chanceRain, chanceSnow, humidity, cloud, feelsLike, windKmp, uv, text, iconUrl, code)
     }

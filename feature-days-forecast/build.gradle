@@ -47,6 +47,8 @@ dependencies {
     implementation Libs.Dagger.dagger
     implementation Libs.Android.core
     implementation Libs.Coil.coilKt
+    implementation Libs.RxJava.rxKotlin
+    implementation Libs.RxJava.rxAndroid
     implementation Libs.Android.appCompat
     implementation Libs.Android.material
     implementation Libs.Android.constraintLayout

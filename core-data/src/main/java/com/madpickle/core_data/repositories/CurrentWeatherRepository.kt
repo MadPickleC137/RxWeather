@@ -9,7 +9,6 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 /**
@@ -40,7 +39,6 @@ internal class CurrentWeatherRepository @Inject constructor(
     /**
      * Получает модель из двух разных источников данных и синхронизирует Observable
      * @param region сторока по которой получаем данные
-     * @param error Слушатель на случай прихода с микросервиса ошибки
      * */
     override fun getCurrentApi(region: String): Observable<CurrentModel> {
         return networkSource.getCurrentWeather(region)

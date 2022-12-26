@@ -11,3 +11,9 @@ fun Float?.toCelsiusString(): String{
     df.format(this)
     return df.format(this) + " ºC"
 }
+
+fun Double?.toCelsiusString(): String{
+    val df = DecimalFormat("#.#")
+    df.format(this)
+    return df.format(this) + " ºC"
+}

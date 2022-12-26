@@ -2,7 +2,7 @@ package com.madpickle.core_data
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.schedulers.Schedulers
 import io.realm.Realm
 import io.realm.exceptions.RealmException
@@ -14,8 +14,8 @@ import java.lang.IllegalArgumentException
  * Created by David Madilyan on 04.12.2022.
  */
 
-internal inline fun <T> executeSingle(crossinline transactionResult: (Realm) -> T?): Single<T> {
-    return Single.create { emitter ->
+internal inline fun <T : Any> executeRealm(crossinline transactionResult: (Realm) -> T?): Maybe<T> {
+    return Maybe.create { emitter ->
         Realm.getDefaultInstance().use { realm ->
             try{
                 realm.executeTransaction {
@@ -23,7 +23,7 @@ internal inline fun <T> executeSingle(crossinline transactionResult: (Realm) -> 
                     if (result != null) {
                         emitter.onSuccess(result)
                     } else {
-                        emitter.onError(Throwable("Realm result is null object"))
+                        emitter.onComplete()
                     }
                 }
             }catch (e: IllegalArgumentException){

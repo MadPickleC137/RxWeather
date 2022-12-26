@@ -5,4 +5,8 @@
     <color name="toolbar_background">#25ACC1EC</color>
     <color name="toolbar_title_text">#F1F1F1</color>
     <color name="text_normal">#FFFFFF</color>
+    <color name="tab_layout_background">#8F24353E</color>
+    <color name="item_day_background">#448AFF</color>
+    <color name="item_day_text">#FFF9C4</color>
+    <color name="item_day_selected_background">#F32240EA</color>
 </resources>

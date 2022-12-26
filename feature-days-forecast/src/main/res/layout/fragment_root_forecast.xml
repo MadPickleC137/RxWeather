@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             style="@style/BaseTextStyle.Title2"/>
         <ImageView
-            android:id="@+id/icon_current"
+            android:id="@+id/icon_day"
             android:layout_width="56dp"
             android:layout_marginTop="6dp"
             android:contentDescription="@null"
@@ -48,7 +48,7 @@
             android:layout_height="56dp"/>
 
         <TextView
-            android:id="@+id/current_temp"
+            android:id="@+id/day_temp"
             tools:text="18 C"
             android:layout_marginTop="6dp"
             android:layout_width="wrap_content"
@@ -70,8 +70,8 @@
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/days_tab_layout"
+        android:paddingVertical="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_layout">
@@ -79,8 +79,20 @@
             android:id="@+id/content_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingHorizontal="8dp"
             android:orientation="vertical">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/days_recycler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                android:orientation="horizontal"
+                tools:listitem="@layout/item_day"
+                android:layout_gravity="center"
+                tools:itemCount="8"
+                android:layout_marginVertical="8dp"
+                android:clipToPadding="false"
+                android:scrollbars="none"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/hours_recycler"
@@ -93,23 +105,12 @@
                 android:scrollbars="none"
                 tools:listitem="@layout/item_hour"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/alerts_recycler"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="8dp"
-                android:overScrollMode="never"
-                android:clipToPadding="false"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:scrollbars="none"
-                tools:itemCount="1"
-                tools:listitem="@layout/item_alert"/>
-
             <LinearLayout
                 android:id="@+id/forecast_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_margin="8dp"
                 android:animateLayoutChanges="true"
                 android:background="@drawable/bg_forecast_detail"
                 android:padding="8dp">
@@ -143,19 +144,42 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <include layout="@layout/astronomy_info"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/alerts_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:overScrollMode="never"
+                android:clipToPadding="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:scrollbars="none"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_alert"/>
+
+            <include
+                android:id="@+id/astronomy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                layout="@layout/astronomy_info"/>
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/days_tab_layout"
+    <FrameLayout
+        android:id="@+id/progress_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="8dp"
-        android:clipToPadding="false"
-        android:scrollbars="none"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:visibility="gone"
+        android:background="@color/bg_progress_mask"
+        android:layout_marginTop="56dp">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/indicator_progress"
+            android:layout_gravity="center"/>
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,11 +19,15 @@
     <color name="timezone_text">#352D2D</color>
     <color name="item_place_background">#81C784</color>
     <color name="item_hour_background">#45003FE3</color>
-    <color name="tab_layout_background">#BA2970A8</color>
+    <color name="tab_layout_background">#8F24353E</color>
     <color name="tab_item_background">#2F45464C</color>
     <color name="tab_layout_text">#FFFFFF</color>
     <color name="text_title_1">#000000</color>
     <color name="text_title_2">#FFFFFF</color>
     <color name="text_normal">#FFF</color>
     <color name="divider_background">#B06C5959</color>
+    <color name="item_day_background">#448AFF</color>
+    <color name="item_day_text">#FFF9C4</color>
+    <color name="item_day_selected_background">#F32240EA</color>
+    <color name="item_hour_selected_background">#D5003FE3</color>
 </resources>
