@@ -4,7 +4,7 @@ package com.madpickle.buildsrc
  * Created by David Madilyan on 18.07.2022.
  */
 object Config {
-    const val API_KEY = "a83fdea24e234c18804170754221506"
+    const val API_KEY = "some_not_public_api_key"
 
     const val WEATHER_BASE_URL = "http://api.weatherapi.com/v1"
 
