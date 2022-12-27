@@ -9,6 +9,8 @@
 /.idea/assetWizardSettings.xml
 .DS_Store
 /build
+/sign
+/sign/rx_weather.jks
 /captures
 .externalNativeBuild
 .cxx

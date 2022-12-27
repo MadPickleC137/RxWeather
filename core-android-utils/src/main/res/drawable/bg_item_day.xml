@@ -12,7 +12,7 @@
     <item android:id="@android:id/background">
         <shape android:shape="rectangle">
             <corners android:radius="16dp"/>
-            <solid android:color="@color/item_day_background"/>
+            <solid android:color="@color/item_hour_background"/>
         </shape>
     </item>
 </ripple>

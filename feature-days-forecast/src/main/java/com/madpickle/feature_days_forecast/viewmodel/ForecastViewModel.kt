@@ -2,11 +2,13 @@ package com.madpickle.feature_days_forecast.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.madpickle.core_android.onCompleted
 import com.madpickle.core_android.viewmodel.BaseViewModel
 import com.madpickle.core_data.model.DayModel
 import com.madpickle.core_data.model.HourModel
 import com.madpickle.core_data.repositories.IForecastRepository
 import com.madpickle.feature_days_forecast.state.ForecastViewState
+import io.reactivex.rxjava3.kotlin.addTo
 import javax.inject.Inject
 
 /**
@@ -38,6 +40,7 @@ class ForecastViewModel @Inject constructor(private val forecastRepo: IForecastR
             }
             .subscribe {
                 _state.value = ForecastViewState.Response(it)
-            }
+                forecastRepo.insertForecast(it).onCompleted()
+            }.addTo(disposeBag)
     }
 }

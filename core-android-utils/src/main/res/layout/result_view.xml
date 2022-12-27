@@ -27,6 +27,7 @@
             android:id="@+id/text"
             android:textSize="14sp"
             android:textStyle="normal"
+            android:paddingHorizontal="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="добавьте новую место"/>

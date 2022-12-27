@@ -8,7 +8,6 @@ import androidx.navigation.fragment.NavHostFragment
 import com.madpickle.core_android.screens.NavigationListener
 import com.madpickle.core_android.screens.Screen
 import com.madpickle.rxweather.databinding.ActivityMainBinding
-import io.realm.Realm
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity(), NavigationListener {
@@ -42,10 +41,5 @@ class MainActivity : AppCompatActivity(), NavigationListener {
     override fun exit() {
         Timber.i("Выход")
         finish()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Realm.getDefaultInstance().close()
     }
 }

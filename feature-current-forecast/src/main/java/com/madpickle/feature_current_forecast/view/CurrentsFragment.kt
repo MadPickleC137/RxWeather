@@ -52,7 +52,6 @@ class CurrentsFragment : BaseFragment<FragmentCurrentsBinding>() {
                 is CurrentsViewState.Response -> setCurrentsListView(it.currents)
                 is CurrentsViewState.Updated -> updateItemByIndex(it.current, it.index)
                 is CurrentsViewState.Deleted -> deleteItemByIndex(it.current, it.index)
-                else -> {}
             }
         }
     }
@@ -66,7 +65,9 @@ class CurrentsFragment : BaseFragment<FragmentCurrentsBinding>() {
     }
 
     private fun updateItemByIndex(current: CurrentModel, index: Int) {
-        currentsAdapter?.updatedItem(current, index)
+        if(isVisible){
+            currentsAdapter?.updatedItem(current, index)
+        }
     }
 
     private fun initViews() {

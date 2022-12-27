@@ -13,7 +13,7 @@
         android:layout_height="32dp"
         tools:text="Снег 70%"
         style="@style/ItemInfoTextViewStyle"
-        app:drawableStartCompat="@drawable/snow_d" />
+        app:drawableStartCompat="@drawable/rain_d" />
 
     <View
         android:id="@+id/divider"

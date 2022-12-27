@@ -14,7 +14,7 @@ class AlertsAdapter: RecyclerView.Adapter<ItemAlertViewHolder>() {
     private val items = mutableListOf<AlertModel>()
     fun initAlerts(newList: List<AlertModel>){
         items.clear()
-        items.addAll(newList)
+        items.addAll(newList.filter { !it.desc.isNullOrEmpty() })
         notifyDataSetChanged()
     }
 

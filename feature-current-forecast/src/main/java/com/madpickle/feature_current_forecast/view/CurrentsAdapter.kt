@@ -2,8 +2,8 @@ package com.madpickle.feature_current_forecast.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.LinearInterpolator
 import android.widget.PopupMenu
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.request.CachePolicy
@@ -34,8 +34,10 @@ class CurrentsAdapter(
     }
 
     fun updatedItem(current: CurrentModel, index: Int) {
-        items[index] = current
-        notifyItemChanged(index)
+        if(items.isNotEmpty()){
+            items[index] = current
+            notifyItemChanged(index)
+        }
     }
 
     fun deleteItem(current: CurrentModel, index: Int) {
@@ -86,7 +88,12 @@ class CurrentsAdapter(
             humidity.text = current.humidity?.toString() + " %"
             lastUpdate.text = String.format(itemView.context.getString(com.madpickle.core_android.R.string.last_updated), current.lastUpdated.getTimeString())
             refreshBtn.setOnClickListener {
-                onItemUpdate.invoke(current, index)
+                onItemUpdate.invoke(current, layoutPosition)
+                it.animate()
+                    .setInterpolator(LinearInterpolator())
+                    .setDuration(500L)
+                    .rotation(360F)
+                    .start()
             }
             root.setOnClickListener {
                 onItemSelect.invoke(current.region)
@@ -108,32 +115,5 @@ class CurrentsAdapter(
                 popup.show()
             }
         }
-    }
-}
-
-/**
- * Пока не пригодился
- * */
-class CurrentDiffUtilCallback(private val oldList: List<CurrentModel>,
-                              private val newList: List<CurrentModel>): DiffUtil.Callback() {
-    override fun getOldListSize(): Int {
-        return oldList.size
-    }
-
-    override fun getNewListSize(): Int {
-        return newList.size
-    }
-
-    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        val newItem = newList[newItemPosition]
-        val oldItem = oldList[oldItemPosition]
-        return newItem.region == oldItem.region
-    }
-
-    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        val newItem = newList[newItemPosition]
-        val oldItem = oldList[oldItemPosition]
-        return newItem.lastUpdated == oldItem.lastUpdated &&
-                newItem.lastUpdatedEpoch == oldItem.lastUpdatedEpoch
     }
 }
