@@ -5,7 +5,7 @@ package com.madpickle.core_network.server
  */
 internal object Constants {
 
-    const val API_KEY = "a83fdea24e234c18804170754221506"
+    const val API_KEY = "some_api_key_not_public"
 
     const val ROOT_URL = "https://api.weatherapi.com/v1/"
 }
